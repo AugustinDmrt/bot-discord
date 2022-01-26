@@ -1,5 +1,5 @@
-import { Client } from 'discord.js';
-const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGES"] })
+const Discord = require('discord.js');
+const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] })
 require("dotenv").config();
 
 const prefixCmd = 'd!';
