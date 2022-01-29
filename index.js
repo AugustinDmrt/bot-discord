@@ -10,6 +10,12 @@ client.on("ready", function() {
     client.channels.cache.get("937026983265726495").send("Bot ON");
 });
 
+// Affiche un message si erreur ou autres... ----------------------------------------------------------
+client.on("error", (e) => client.channels.cache.get("937026983265726495").send(`**Erreur :** "${e}"`));
+client.on("warn", (e) => client.channels.cache.get("937026983265726495").send(`**Warn :** "${e}"`));
+client.on("debug", (e) => client.channels.cache.get("937026983265726495").send(`**Debug :** "${e}"`));
+// ----------------------------------------------------------------------------------------------------
+
 client.on("messageCreate", (msg) => {
     // Si le message n'est pas préfixé ou qu'il vient d'un autre bot, nous l'ignorons
     if (!msg.content.startsWith(prefixCmd) || msg.author.bot) return;
@@ -30,7 +36,7 @@ client.on("messageCreate", (msg) => {
             msg.channel.send("pong");
             break;
 
-        case "debug":
+        case "test":
             client.channels.cache.get("937026983265726495").send("OK !");
             break;
 
@@ -41,20 +47,14 @@ client.on("messageCreate", (msg) => {
 
 // A tester si ça marche ------------------------------------------------------------------------------------
 client.on("guildMemberAdd", (member) => {
-    client.channels.cache.get("937026983265726495").send(`**"${member.user.username}"** a rejoind le serveur`);
+    client.channels.cache.get("937026983265726495").send(`**${member.user.username}** a rejoind le serveur`);
 });
 // ----------------------------------------------------------------------------------------------------------
 
 // Marche pas a voir ----------------------------------------------------------------------------------------
 client.on("guildMemberRemove", (member) => {
-    client.channels.cache.get("937026983265726495").send(`**"${member.user.username}"** a quitté le serveur`);
+    client.channels.cache.get("937026983265726495").send(`**${member.user.username}** a quitté le serveur`);
 });
 // ----------------------------------------------------------------------------------------------------------
-
-// Affiche un message si erreur ou autres... ----------------------------------------------------------
-client.on("error", (e) => client.channels.cache.get("937026983265726495").send(`**Erreur :** "${e}"`));
-client.on("warn", (e) => client.channels.cache.get("937026983265726495").send(`**Warn :** "${e}"`));
-client.on("debug", (e) => client.channels.cache.get("937026983265726495").send(`**Debug :** "${e}"`));
-// ----------------------------------------------------------------------------------------------------
 
 client.login(process.env.BOT_TOKEN);
