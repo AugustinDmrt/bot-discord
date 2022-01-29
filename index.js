@@ -39,10 +39,8 @@ client.on("messageCreate", (msg) => {
 });
 
 // Si un personne leave le server :
-client
-    .leave()
-    .then(
-        client.channels.cache.get("937026983265726495").send("Left the guild ${g}")
-    );
+
+Discord.Guild.leave()
+    .then(g => client.channels.cache.get("937026983265726495").send("Left the guild ${g}"));
 
 client.login(process.env.BOT_TOKEN);
