@@ -1,5 +1,13 @@
 const Discord = require("discord.js");
-const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
+const { Client, Intents } = require("discord.js");
+// const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS"] });  Ancienne ligne
+const client = new Discord.Client({
+    intents: [
+        Intents.FLAGS.GUILDS,
+        Intents.FLAGS.GUILD_MESSAGES,
+        Intents.FLAGS.GUILD_MEMBERS,
+    ],
+});
 require("dotenv").config();
 
 const prefixCmd = "d!";
@@ -12,13 +20,13 @@ client.on("ready", function() {
 
 // Affiche un message si erreur ou autres... ----------------------------------------------------------
 client.on("error", (e) =>
-    client.channels.cache.get("937026983265726495").send(`**Erreur :** "${e}"`)
+    client.channels.cache.get("937026983265726495").send(`**Erreur :** ${e}`)
 );
 client.on("warn", (e) =>
-    client.channels.cache.get("937026983265726495").send(`**Warn :** "${e}"`)
+    client.channels.cache.get("937026983265726495").send(`**Warn :** ${e}`)
 );
 client.on("debug", (e) =>
-    client.channels.cache.get("937026983265726495").send(`**Debug :** "${e}"`)
+    client.channels.cache.get("937026983265726495").send(`**Debug :** ${e}`)
 );
 // ----------------------------------------------------------------------------------------------------
 
