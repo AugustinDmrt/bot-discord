@@ -3,8 +3,6 @@ const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] })
 require("dotenv").config();
 
 const prefixCmd = 'd!';
-const logsChannel = client.channels.cache.get("937026983265726495");
-
 
 //Toutes les actions à faire quand le bot se connecte
 client.on("ready", function() {
@@ -32,8 +30,8 @@ client.on("messageCreate", msg => {
             msg.channel.send("pong");
             break;
 
-        case "test":
-            logsChannel.send("OK !");
+        case "debug":
+            client.channels.cache.get("937026983265726495").send("OK !");
             break;
 
         default:
@@ -42,12 +40,9 @@ client.on("messageCreate", msg => {
 
 });
 
-// ------------- Test plus tard ----------------
-// // Leave a guild
-// guild.leave()
-//   .then(g => console.log(`Left the guild ${g}`))
-//   .catch(console.error);
-
+// Si un personne leave le server :
+guild.leave()
+    .then(client.channels.cache.get("937026983265726495").send("Left the guild ${g}"))
 
 
 client.login(process.env.BOT_TOKEN);
