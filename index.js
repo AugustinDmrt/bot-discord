@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
+const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS"] });
 require("dotenv").config();
 
 const prefixCmd = "d!";
@@ -11,9 +11,15 @@ client.on("ready", function() {
 });
 
 // Affiche un message si erreur ou autres... ----------------------------------------------------------
-client.on("error", (e) => client.channels.cache.get("937026983265726495").send(`**Erreur :** "${e}"`));
-client.on("warn", (e) => client.channels.cache.get("937026983265726495").send(`**Warn :** "${e}"`));
-client.on("debug", (e) => client.channels.cache.get("937026983265726495").send(`**Debug :** "${e}"`));
+client.on("error", (e) =>
+    client.channels.cache.get("937026983265726495").send(`**Erreur :** "${e}"`)
+);
+client.on("warn", (e) =>
+    client.channels.cache.get("937026983265726495").send(`**Warn :** "${e}"`)
+);
+client.on("debug", (e) =>
+    client.channels.cache.get("937026983265726495").send(`**Debug :** "${e}"`)
+);
 // ----------------------------------------------------------------------------------------------------
 
 client.on("messageCreate", (msg) => {
@@ -47,13 +53,17 @@ client.on("messageCreate", (msg) => {
 
 // A tester si ça marche ------------------------------------------------------------------------------------
 client.on("guildMemberAdd", (member) => {
-    client.channels.cache.get("937026983265726495").send(`**${member.user.username}** a rejoind le serveur`);
+    client.channels.cache
+        .get("937026983265726495")
+        .send(`**${member.user.username}** a rejoind le serveur`);
 });
 // ----------------------------------------------------------------------------------------------------------
 
 // Marche pas a voir ----------------------------------------------------------------------------------------
 client.on("guildMemberRemove", (member) => {
-    client.channels.cache.get("937026983265726495").send(`**${member.user.username}** a quitté le serveur`);
+    client.channels.cache
+        .get("937026983265726495")
+        .send(`**${member.user.username}** a quitté le serveur`);
 });
 // ----------------------------------------------------------------------------------------------------------
 
