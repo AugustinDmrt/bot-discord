@@ -32,7 +32,7 @@ client.on("messageCreate", msg => {
             break;
 
         case "test":
-            msg.channel.send("OK ;)");
+            client.channels.cache.get("937026983265726495").send("OK ;)");
             break;
 
         default:
