@@ -9,7 +9,7 @@ const channel = client.channels.cache.find(channel => channel.name === "testbotd
 //Toutes les actions à faire quand le bot se connecte
 client.on("ready", function() {
     console.log("Bot ON");
-    channel.send("Bot ON");
+    // channel.send("Bot ON");
 })
 
 client.on("messageCreate", msg => {
