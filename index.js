@@ -3,16 +3,19 @@ const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] })
 require("dotenv").config();
 
 const prefixCmd = 'd!';
+const channel = client.channels.cache.find(channel => channel.name === "testbotdiscord");
+
 
 //Toutes les actions à faire quand le bot se connecte
-client.on("ready", function () {
+client.on("ready", function() {
     console.log("Bot ON");
+    channel.send("Bot ON");
 })
 
 client.on("messageCreate", msg => {
 
     // Si le message n'est pas préfixé ou qu'il vient d'un autre bot, nous l'ignorons
-    if(!msg.content.startsWith(prefixCmd) || msg.author.bot) return
+    if (!msg.content.startsWith(prefixCmd) || msg.author.bot) return
 
     // Si nous arrivons jusque ici, alors c'est une commande
 
@@ -29,5 +32,12 @@ client.on("messageCreate", msg => {
     }
 
 });
+
+// // Leave a guild
+// guild.leave()
+//   .then(g => console.log(`Left the guild ${g}`))
+//   .catch(console.error);
+
+
 
 client.login(process.env.BOT_TOKEN);
