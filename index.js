@@ -7,6 +7,7 @@ const prefixCmd = "d!";
 //Toutes les actions à faire quand le bot se connecte
 client.on("ready", function() {
     console.log("Bot ON");
+    client.channels.cache.get("937026983265726495").send("Bot ON");
 });
 
 client.on("messageCreate", (msg) => {
@@ -36,6 +37,10 @@ client.on("messageCreate", (msg) => {
         default:
             break;
     }
+});
+
+client.on("guildMemberRemove", (member) => {
+    client.channels.cache.get("937026983265726495").send(`**${member.user.username}** a quitté le serveur`);
 });
 
 client.login(process.env.BOT_TOKEN);
