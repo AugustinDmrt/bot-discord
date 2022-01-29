@@ -27,10 +27,18 @@ client.on("messageCreate", msg => {
     // À ce stade, args est un tableau ne contenant que les arguments étant donné que la commande a été extraite de celui-ci
 
     // On se sert maintenant de la varibale 'command' pour le test
-    if (command === "ping") {
-        msg.channel.send("pong");
-    }
+    switch (command) {
+        case "ping":
+            msg.channel.send("pong");
+            break;
 
+        case "test":
+            msg.channel.send("OK ;)");
+            break;
+
+        default:
+            break;
+    }
 });
 
 // // Leave a guild
