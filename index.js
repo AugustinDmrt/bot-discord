@@ -28,7 +28,7 @@ client.on("messageCreate", msg => {
 
     // On se sert maintenant de la varibale 'command' pour le test
 
-    if (command == "ping") {
+    if (command === "ping") {
         msg.channel.send("pong");
     }
 
