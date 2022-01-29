@@ -3,13 +3,11 @@ const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] })
 require("dotenv").config();
 
 const prefixCmd = 'd!';
-const channel = client.channels.cache.find(channel => channel.name === "testbotdiscord");
 
 
 //Toutes les actions à faire quand le bot se connecte
 client.on("ready", function() {
     console.log("Bot ON");
-    // channel.send("Bot ON");
 })
 
 client.on("messageCreate", msg => {
@@ -28,22 +26,18 @@ client.on("messageCreate", msg => {
 
     // On se sert maintenant de la varibale 'command' pour le test
 
-    if (command === "ping") {
-        msg.channel.send("pong");
+    switch (command) {
+        case "ping":
+            msg.channel.send("pong");
+            break;
+
+        case "test":
+            msg.channel.send("OK ;)");
+            break;
+
+        default:
+            break;
     }
-
-    // switch (command) {
-    //     case "ping":
-    //         msg.channel.send("pong");
-    //         break;
-
-    //     case "test":
-    //         msg.channel.send("OK ;)");
-    //         break;
-
-    //     default:
-    //         break;
-    // }
 
 });
 
