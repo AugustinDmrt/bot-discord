@@ -10,17 +10,17 @@ client.on("ready", function() {
     client.channels.cache.get("937026983265726495").send("Bot ON");
 });
 
-// Affiche un message si erreur ou autres... ----------------------------------------------------------
-client.on("error", (e) =>
-    client.channels.cache.get("937026983265726495").send(`**Erreur :** "${e}"`)
-);
-client.on("warn", (e) =>
-    client.channels.cache.get("937026983265726495").send(`**Warn :** "${e}"`)
-);
-client.on("debug", (e) =>
-    client.channels.cache.get("937026983265726495").send(`**Debug :** "${e}"`)
-);
-// ----------------------------------------------------------------------------------------------------
+// // Affiche un message si erreur ou autres... ----------------------------------------------------------
+// client.on("error", (e) =>
+//     client.channels.cache.get("937026983265726495").send(`**Erreur :** "${e}"`)
+// );
+// client.on("warn", (e) =>
+//     client.channels.cache.get("937026983265726495").send(`**Warn :** "${e}"`)
+// );
+// client.on("debug", (e) =>
+//     client.channels.cache.get("937026983265726495").send(`**Debug :** "${e}"`)
+// );
+// // ----------------------------------------------------------------------------------------------------
 
 client.on("messageCreate", (msg) => {
     // Si le message n'est pas préfixé ou qu'il vient d'un autre bot, nous l'ignorons
