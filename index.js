@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const { joinVoiceChannel } = require("@discordjs/voice");
+const ytdl = require("ytdl-core");
 const { Client, Intents } = require("discord.js");
 const client = new Discord.Client({
     intents: [
@@ -66,6 +66,36 @@ client.on("messageCreate", (msg) => {
                         "L'utilisateur **" + msg.author.tag + "** a crée une invitation"
                     );
             });
+            break;
+
+        case "drill":
+            if (msg.member.voice.channel) {
+                msg.member.voice.channel
+                    .join()
+                    .then((connection) => {
+                        let args = msg.content.split(" ");
+
+                        let dispatcher = connection.play(
+                            ytdl(args[1], { quality: "highestaudio" })
+                        );
+
+                        dispatcher.on("finish", () => {
+                            dispatcher.destroy();
+                            connection.disconnect();
+                        });
+
+                        dispatcher.on("error", (err) => {
+                            client.channels.cache
+                                .get(logsChannel)
+                                .send("**Erreur du dispatcher : " + err);
+                        });
+                    })
+                    .catch((err) => {
+                        msg.reply("Erreur lors de la connection");
+                    });
+            } else {
+                msg.reply("Vous n'êtes pas connecté a un salon vocal");
+            }
             break;
 
         default:
