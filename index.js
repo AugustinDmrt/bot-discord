@@ -4,7 +4,8 @@ const client = new Discord.Client({
     intents: [
         Intents.FLAGS.GUILDS,
         Intents.FLAGS.GUILD_MESSAGES,
-        Intents.FLAGS.GUILD_MEMBERS, // A VOIR
+        Intents.FLAGS.GUILD_MEMBERS,
+        Intents.FLAGS.GUILD_VOICE_STATES, // Voir si c'est utile
     ],
 });
 require("dotenv").config();
@@ -66,15 +67,7 @@ client.on("messageCreate", (msg) => {
             break;
 
         case "drill":
-            const channel = client.channels.cache.get("568439232780042282");
-            if (!channel) return console.error("The channel does not exist!");
-            channel.cache.join().then(connection => {
-                // Yay, it worked!
-                console.log("Successfully connected.");
-            }).catch(e => {
-                // Oh no, it errored! Let's log it to console :)
-                console.error(e);
-            });
+            msg.member.voice.channel.join();
             break;
 
         default:
