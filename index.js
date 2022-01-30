@@ -62,6 +62,9 @@ client.on("messageCreate", (msg) => {
             break;
 
         case "drill":
+            msg.channel.send(
+                "Commande pris en compte"
+            );
             const voiceChannel = msg.member.voice.channel;
             if (!voiceChannel)
                 return msg.channel.send(
