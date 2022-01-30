@@ -25,9 +25,9 @@ client.on("error", (e) => {
 client.on("warn", (e) => {
     client.channels.cache.get(logsChannel).send("**Warn :**" + e.message)
 });
-client.on("debug", (e) => {
-    client.channels.cache.get(logsChannel).send("**Debug :**" + e.message);
-});
+// client.on("debug", (e) => {
+//     client.channels.cache.get(logsChannel).send("**Debug :**" + e.message);
+// });
 // ----------------------------------------------------------------------------------------------------
 
 client.on("messageCreate", (msg) => {
