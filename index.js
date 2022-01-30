@@ -69,33 +69,37 @@ client.on("messageCreate", (msg) => {
             break;
 
         case "drill":
-            if (msg.member.voice.channel) {
-                msg.member.voice.channel
-                    .join()
-                    .then((connection) => {
-                        // let args = msg.content.split(" ");
+            const { joinVoiceChannel } = require('@discordjs/voice');
+            joinVoiceChannel({
+                channelId: msg.member.voice.channel.id,
+                guildId: msg.guild.id,
+                adapterCreator: msg.guild.voiceAdapterCreator
+            })
 
-                        // let dispatcher = connection.play(
-                        //     ytdl(args[1], { quality: "highestaudio" })
-                        // );
-
-                        // dispatcher.on("finish", () => {
-                        //     dispatcher.destroy();
-                        //     connection.disconnect();
-                        // });
-
-                        // dispatcher.on("error", (err) => {
-                        //     client.channels.cache
-                        //         .get(logsChannel)
-                        //         .send("**Erreur du dispatcher : " + err);
-                        // });
-                    })
-                    .catch((err) => {
-                        msg.reply("Erreur lors de la connection");
-                    });
-            } else {
-                msg.reply("Vous n'êtes pas connecté a un salon vocal");
-            }
+            // if (msg.member.voice.channel) {
+            //     msg.member.voice.channel
+            //         .join()
+            //         .then((connection) => {
+            //             // let args = msg.content.split(" ");
+            //             // let dispatcher = connection.play(
+            //             //     ytdl(args[1], { quality: "highestaudio" })
+            //             // );
+            //             // dispatcher.on("finish", () => {
+            //             //     dispatcher.destroy();
+            //             //     connection.disconnect();
+            //             // });
+            //             // dispatcher.on("error", (err) => {
+            //             //     client.channels.cache
+            //             //         .get(logsChannel)
+            //             //         .send("**Erreur du dispatcher : " + err);
+            //             // });
+            //         })
+            //         .catch((err) => {
+            //             msg.reply("Erreur lors de la connection");
+            //         });
+            // } else {
+            //     msg.reply("Vous n'êtes pas connecté a un salon vocal");
+            // }
             break;
 
         default:
