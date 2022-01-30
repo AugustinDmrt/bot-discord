@@ -73,22 +73,22 @@ client.on("messageCreate", (msg) => {
                 msg.member.voice.channel
                     .join()
                     .then((connection) => {
-                        let args = msg.content.split(" ");
+                        // let args = msg.content.split(" ");
 
-                        let dispatcher = connection.play(
-                            ytdl(args[1], { quality: "highestaudio" })
-                        );
+                        // let dispatcher = connection.play(
+                        //     ytdl(args[1], { quality: "highestaudio" })
+                        // );
 
-                        dispatcher.on("finish", () => {
-                            dispatcher.destroy();
-                            connection.disconnect();
-                        });
+                        // dispatcher.on("finish", () => {
+                        //     dispatcher.destroy();
+                        //     connection.disconnect();
+                        // });
 
-                        dispatcher.on("error", (err) => {
-                            client.channels.cache
-                                .get(logsChannel)
-                                .send("**Erreur du dispatcher : " + err);
-                        });
+                        // dispatcher.on("error", (err) => {
+                        //     client.channels.cache
+                        //         .get(logsChannel)
+                        //         .send("**Erreur du dispatcher : " + err);
+                        // });
                     })
                     .catch((err) => {
                         msg.reply("Erreur lors de la connection");
