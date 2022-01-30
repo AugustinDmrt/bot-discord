@@ -6,7 +6,6 @@ const client = new Discord.Client({
         Intents.FLAGS.GUILDS,
         Intents.FLAGS.GUILD_MESSAGES,
         Intents.FLAGS.GUILD_MEMBERS,
-        Intents.FLAGS.GUILD_VOICE_STATES, // Voir si c'est utile
     ],
 });
 require("dotenv").config();
@@ -69,23 +68,12 @@ client.on("messageCreate", (msg) => {
             });
             break;
 
-        case "drill":
-            joinConfig = {
-                channelId: msg.member.voice.channel.id,
-                guildId: msg.guild.id,
-            }
-            joinVoiceChannel.VoiceConnection(joinConfig);
-            break;
-
-        case "leave":
-            joinVoiceChannel.destroy();
-
         default:
             break;
     }
 });
 
-// A tester si ça marche ------------------------------------------------------------------------------------
+// Envoie un message dans les logs du bot si un joueur rejoind le serveur -----------------------------------
 client.on("guildMemberAdd", (member) => {
     client.channels.cache
         .get(logsChannel)
@@ -93,7 +81,7 @@ client.on("guildMemberAdd", (member) => {
 });
 // ----------------------------------------------------------------------------------------------------------
 
-// Marche pas a voir ----------------------------------------------------------------------------------------
+// Envoie un message dans les logs du bot si un joueur quitte le serveur ------------------------------------
 client.on("guildMemberRemove", (member) => {
     client.channels.cache
         .get(logsChannel)
