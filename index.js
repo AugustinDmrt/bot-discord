@@ -20,13 +20,13 @@ client.on("ready", function() {
 
 // Affiche un message si erreur ou autres... ----------------------------------------------------------
 client.on("error", (e) => {
-    client.channels.cache.get(logsChannel).send("**Erreur :**", e.message);
+    client.channels.cache.get(logsChannel).send("**Erreur :**" + e.message);
 });
 client.on("warn", (e) => {
-    client.channels.cache.get(logsChannel).send("**Warn :**", e.message)
+    client.channels.cache.get(logsChannel).send("**Warn :**" + e.message)
 });
 client.on("debug", (e) => {
-    client.channels.cache.get(logsChannel).send("**Debug :**", e.message);
+    client.channels.cache.get(logsChannel).send("**Debug :**" + e.message);
 });
 // ----------------------------------------------------------------------------------------------------
 
