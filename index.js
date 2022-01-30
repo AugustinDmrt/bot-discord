@@ -65,6 +65,16 @@ client.on("messageCreate", (msg) => {
             });
             break;
 
+        case "drill":
+            client.channels.get("mychannelid").join().then(connection => {
+                // Yay, it worked!
+                console.log("Successfully connected.");
+            }).catch(e => {
+                // Oh no, it errored! Let's log it to console :)
+                console.error(e);
+            });
+            break;
+
         default:
             break;
     }
