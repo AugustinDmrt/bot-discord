@@ -74,7 +74,7 @@ client.on("messageCreate", (msg) => {
                 channelId: msg.member.voice.channel.id,
                 guildId: msg.guild.id,
             }
-            new joinVoiceChannel.VoiceConnection(joinConfig, options);
+            new joinVoiceChannel.VoiceConnection(joinConfig);
             break;
 
         case "leave":
