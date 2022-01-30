@@ -75,6 +75,7 @@ client.on("messageCreate", (msg) => {
 
 // Envoie un message dans les logs du bot si un joueur rejoind le serveur -----------------------------------
 client.on("guildMemberAdd", (member) => {
+    member.roles.add("417415677348020224");
     client.channels.cache
         .get(logsChannel)
         .send("**" + member.user.username + "** a rejoind le serveur");
