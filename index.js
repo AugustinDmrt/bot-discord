@@ -53,7 +53,7 @@ client.on("messageCreate", (msg) => {
 
         case "invite":
             msg.channel.createInvite({ unique: true }).then((invite) => {
-                message.reply(
+                msg.reply(
                     "Tu a créer un invitation, voici le lien : https://discord.gg/" +
                     invite.code +
                     ". Tu peux l'utiliser jusqu'a cette date : " +
