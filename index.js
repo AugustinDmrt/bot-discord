@@ -23,7 +23,7 @@ client.on("error", (e) => {
     client.channels.cache.get(logsChannel).send("**Erreur :**" + e.message);
 });
 client.on("warn", (e) => {
-    client.channels.cache.get(logsChannel).send("**Warn :**" + e.message)
+    client.channels.cache.get(logsChannel).send("**Warn :**" + e.message);
 });
 // ----------------------------------------------------------------------------------------------------
 
@@ -51,6 +51,22 @@ client.on("messageCreate", (msg) => {
             client.channels.cache.get(logsChannel).send("OK !");
             break;
 
+        case "invite":
+            msg.channel.createInvite({ unique: true }).then((invite) => {
+                message.reply(
+                    "Tu a créer un invitation, voici le lien : https://discord.gg/" +
+                    invite.code +
+                    ". Tu peux l'utiliser jusqu'a cette date : " +
+                    invite.expiresAt
+                );
+                client.channels.cache
+                    .get(logsChannel)
+                    .send(
+                        "L'utilisateur **" + invite.inviter + "** a crée une invitation"
+                    );
+            });
+            break;
+
         default:
             break;
     }
@@ -68,7 +84,7 @@ client.on("guildMemberAdd", (member) => {
 client.on("guildMemberRemove", (member) => {
     client.channels.cache
         .get(logsChannel)
-        .send("**" + member.user.username + "** a quitté le serveur");
+        .send("**" + member.user.username + "** a quitté le serveur...");
 });
 // ----------------------------------------------------------------------------------------------------------
 
