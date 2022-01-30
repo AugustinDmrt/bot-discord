@@ -10,23 +10,23 @@ const client = new Discord.Client({
 require("dotenv").config();
 
 const prefixCmd = "d!";
-var logsChannel = "937026983265726495";
+var logsChannel = "937026983265726495"; // Identifiant du channel des logs du bot
 
 //Toutes les actions à faire quand le bot se connecte
 client.on("ready", function() {
     console.log("Bot ON");
-    client.channels.cache.get("937026983265726495").send("Bot ON");
+    client.channels.cache.get(logsChannel).send("Bot ON");
 });
 
 // // Affiche un message si erreur ou autres... ----------------------------------------------------------
 // client.on("error", e => {
-//     client.channels.cache.get("937026983265726495").send("**Erreur :**", e);
+//     client.channels.cache.get(logsChannel).send("**Erreur :**", e);
 // });
 // client.on("warn", e => {
-//     client.channels.cache.get("937026983265726495").send("**Warn :**", e)
+//     client.channels.cache.get(logsChannel).send("**Warn :**", e)
 // });
 // client.on("debug", e => {
-//     client.channels.cache.get("937026983265726495").send("**Debug :**", e);
+//     client.channels.cache.get(logsChannel").send("**Debug :**", e);
 // });
 // // ----------------------------------------------------------------------------------------------------
 
