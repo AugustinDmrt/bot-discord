@@ -70,16 +70,15 @@ client.on("messageCreate", (msg) => {
             break;
 
         case "drill":
-            const connection = joinVoiceChannel({
-                channelId: "568439232780042282",
+            joinConfig = {
+                channelId: msg.member.voice.channel.id,
                 guildId: msg.guild.id,
-                adapterCreator: msg.guild.voiceAdapterCreator,
-            });
-
+            }
+            new joinVoiceChannel.VoiceConnection(joinConfig, options);
             break;
 
         case "leave":
-            connection.destroy();
+            joinVoiceChannel.destroy();
 
         default:
             break;
