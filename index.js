@@ -71,9 +71,9 @@ client.on("messageCreate", (msg) => {
 
         case "drill":
             joinVoiceChannel({
-                channelId: message.member.voice.channel.id,
-                guildId: message.guild.id,
-                adapterCreator: message.guild.voiceAdapterCreator,
+                channelId: msg.member.voice.channel.id,
+                guildId: msg.guild.id,
+                adapterCreator: msg.guild.voiceAdapterCreator,
             });
             break;
 
