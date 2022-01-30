@@ -59,7 +59,7 @@ client.on("messageCreate", (msg) => {
                     ". Tu peux l'utiliser pendant 24H"
                 );
                 const User = client.users.cache.get(msg.author); // Getting the user by ID.
-                console.log(User.tag);
+                console.log(User);
                 console.log(User.tag);
                 client.channels.cache
                     .get(logsChannel)
