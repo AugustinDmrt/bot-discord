@@ -23,7 +23,7 @@ client.on("error", (e) => {
     client.channels.cache.get(logsChannel).send("**Erreur :**", e.message);
 });
 client.on("warn", (e) => {
-    client.channels.cache.get(logsChannel).send("**Warn :**", e.messagee)
+    client.channels.cache.get(logsChannel).send("**Warn :**", e.message)
 });
 client.on("debug", (e) => {
     client.channels.cache.get(logsChannel).send("**Debug :**", e.message);
