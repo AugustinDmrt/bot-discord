@@ -59,11 +59,10 @@ client.on("messageCreate", (msg) => {
                     ". Tu peux l'utiliser jusqu'a cette date : " +
                     invite.expiresAt
                 );
+                const User = client.users.cache.get(invite.inviterId); // Getting the user by ID.
                 client.channels.cache
                     .get(logsChannel)
-                    .send(
-                        "L'utilisateur **" + invite.inviter + "** a crée une invitation"
-                    );
+                    .send("L'utilisateur **" + User.tag + "** a crée une invitation");
             });
             break;
 
