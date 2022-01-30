@@ -18,15 +18,15 @@ client.on("ready", function() {
 });
 
 // Affiche un message si erreur ou autres... ----------------------------------------------------------
-client.on("error", (e) =>
-    client.channels.cache.get("937026983265726495").send(`**Erreur :** ${e}`)
-);
-client.on("warn", (e) =>
-    client.channels.cache.get("937026983265726495").send(`**Warn :** ${e}`)
-);
-client.on("debug", (e) =>
-    client.channels.cache.get("937026983265726495").send(`**Debug :** ${e}`)
-);
+client.on("error", e => {
+    client.channels.cache.get("937026983265726495").send("**Erreur :**", e);
+});
+client.on("warn", e => {
+    client.channels.cache.get("937026983265726495").send("**Warn :**", e)
+});
+client.on("debug", e => {
+    client.channels.cache.get("937026983265726495").send("**Debug :**", e);
+});
 // ----------------------------------------------------------------------------------------------------
 
 client.on("messageCreate", (msg) => {
