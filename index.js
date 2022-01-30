@@ -62,9 +62,21 @@ client.on("messageCreate", (msg) => {
             break;
 
         case "drill":
+            const voiceChannel = msg.member.voice.channel;
+            if (!voiceChannel)
+                return msg.channel.send(
+                    "You need to be in a voice channel to play music!"
+                );
+            const permissions = voiceChannel.permissionsFor(msg.client.user);
+            if (!permissions.has("CONNECT") || !permissions.has("SPEAK")) {
+                return msg.channel.send(
+                    "I need the permissions to join and speak in your voice channel!"
+                );
+            }
+
             joinVoiceChannel({
-                channelId: msg.member.voice.channel.id,
-                guildId: msg.guild.id,
+                channelId: "568439232780042282",
+                guildId: "404321483498717196",
                 adapterCreator: msg.guild.voiceAdapterCreator,
             });
 
