@@ -18,17 +18,17 @@ client.on("ready", function() {
     client.channels.cache.get(logsChannel).send("Bot ON");
 });
 
-// // Affiche un message si erreur ou autres... ----------------------------------------------------------
-// client.on("error", e => {
-//     client.channels.cache.get(logsChannel).send("**Erreur :**", e);
-// });
-// client.on("warn", e => {
-//     client.channels.cache.get(logsChannel).send("**Warn :**", e)
-// });
-// client.on("debug", e => {
-//     client.channels.cache.get(logsChannel").send("**Debug :**", e);
-// });
-// // ----------------------------------------------------------------------------------------------------
+// Affiche un message si erreur ou autres... ----------------------------------------------------------
+client.on("error", (e) => {
+    client.channels.cache.get(logsChannel).send("**Erreur :**", e.message);
+});
+client.on("warn", (e) => {
+    client.channels.cache.get(logsChannel).send("**Warn :**", e.messagee)
+});
+client.on("debug", (e) => {
+    client.channels.cache.get(logsChannel).send("**Debug :**", e.message);
+});
+// ----------------------------------------------------------------------------------------------------
 
 client.on("messageCreate", (msg) => {
     // Si le message n'est pas préfixé ou qu'il vient d'un autre bot, nous l'ignorons
