@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const { joinVoiceChannel } = require("@discordjs/voice");
+const { joinVoiceChannel } = require('@discordjs/voice');
 const { Client, Intents } = require("discord.js");
 const client = new Discord.Client({
     intents: [
@@ -70,12 +70,16 @@ client.on("messageCreate", (msg) => {
             break;
 
         case "drill":
-            joinVoiceChannel({
-                channelId: msg.member.voice.channel.id,
+            const connection = joinVoiceChannel({
+                channelId: "568439232780042282",
                 guildId: msg.guild.id,
                 adapterCreator: msg.guild.voiceAdapterCreator,
             });
+
             break;
+
+        case "leave":
+            connection.destroy();
 
         default:
             break;
