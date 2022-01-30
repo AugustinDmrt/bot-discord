@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const ytdl = require("ytdl-core");
+const { joinVoiceChannel } = require('@discordjs/voice');
 const { Client, Intents } = require("discord.js");
 const client = new Discord.Client({
     intents: [
@@ -18,15 +19,6 @@ client.on("ready", function() {
     console.log("Bot ON");
     client.channels.cache.get(logsChannel).send("Bot ON");
 });
-
-// Affiche un message si erreur ou autres... ----------------------------------------------------------
-client.on("error", (e) => {
-    client.channels.cache.get(logsChannel).send("**Erreur :**" + e.message);
-});
-client.on("warn", (e) => {
-    client.channels.cache.get(logsChannel).send("**Warn :**" + e.message);
-});
-// ----------------------------------------------------------------------------------------------------
 
 client.on("messageCreate", (msg) => {
     // Si le message n'est pas préfixé ou qu'il vient d'un autre bot, nous l'ignorons
@@ -69,12 +61,14 @@ client.on("messageCreate", (msg) => {
             break;
 
         case "drill":
-            const { joinVoiceChannel } = require('@discordjs/voice');
-
             const connection = joinVoiceChannel({
                 channelId: msg.member.voice.channel.id,
                 guildId: msg.guild.id,
                 adapterCreator: msg.guild.voiceAdapterCreator,
+            });
+
+            connection.on(joinVoiceChannel.Ready, () => {
+                console.log('The connection has entered the Ready state - ready to play audio!');
             });
 
 
