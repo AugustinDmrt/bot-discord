@@ -67,12 +67,12 @@ client.on("messageCreate", (msg) => {
             );
             const voiceChannel = msg.member.voice.channel;
             if (!voiceChannel)
-                return msg.channel.send(
+                msg.channel.send(
                     "You need to be in a voice channel to play music!"
                 );
             const permissions = voiceChannel.permissionsFor(msg.client.user);
             if (!permissions.has("CONNECT") || !permissions.has("SPEAK")) {
-                return msg.channel.send(
+                msg.channel.send(
                     "I need the permissions to join and speak in your voice channel!"
                 );
             }
