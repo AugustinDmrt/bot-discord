@@ -7,6 +7,7 @@ const client = new Discord.Client({
         Intents.FLAGS.GUILDS,
         Intents.FLAGS.GUILD_MESSAGES,
         Intents.FLAGS.GUILD_MEMBERS,
+        Intents.FLAGS.GUILD_VOICE,
     ],
 });
 require("dotenv").config();
@@ -68,7 +69,9 @@ client.on("messageCreate", (msg) => {
             });
 
             connection.on(joinVoiceChannel.Ready, () => {
-                console.log('The connection has entered the Ready state - ready to play audio!');
+                client.channels.cache
+                    .get(logsChannel)
+                    .send("The connection has entered the Ready state - ready to play audio!");
             });
 
 
