@@ -68,7 +68,7 @@ client.on("messageCreate", (msg) => {
         case "drill":
             const channel = client.channels.cache.get("568439232780042282");
             if (!channel) return console.error("The channel does not exist!");
-            channel.join().then(connection => {
+            channel.cache.join().then(connection => {
                 // Yay, it worked!
                 console.log("Successfully connected.");
             }).catch(e => {
