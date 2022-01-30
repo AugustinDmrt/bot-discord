@@ -58,12 +58,10 @@ client.on("messageCreate", (msg) => {
                     invite.code +
                     ". Tu peux l'utiliser pendant 24H"
                 );
-                console.log(invite.inviter.id);
-                console.log(invite.inviterId);
-                // const User = client.users.cache.get(msg.author); // Getting the user by ID.
+                // const User = client.users.cache.get(msg.author.tag); // Getting the user by ID.
                 client.channels.cache
                     .get(logsChannel)
-                    .send("L'utilisateur **" + User.tag + "** a crée une invitation");
+                    .send("L'utilisateur **" + msg.author.tag + "** a crée une invitation");
             });
             break;
 
