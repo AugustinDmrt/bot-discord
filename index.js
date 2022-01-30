@@ -56,20 +56,20 @@ client.on("messageCreate", (msg) => {
     }
 });
 
-// // A tester si ça marche ------------------------------------------------------------------------------------
-// client.on("guildMemberAdd", (member) => {
-//     client.channels.cache
-//         .get("937026983265726495")
-//         .send(`**${member.user.username}** a rejoind le serveur`);
-// });
-// // ----------------------------------------------------------------------------------------------------------
+// A tester si ça marche ------------------------------------------------------------------------------------
+client.on("guildMemberAdd", (member) => {
+    client.channels.cache
+        .get(logsChannel)
+        .send("**" + member.user.username + "** a rejoind le serveur");
+});
+// ----------------------------------------------------------------------------------------------------------
 
-// // Marche pas a voir ----------------------------------------------------------------------------------------
-// client.on("guildMemberRemove", (member) => {
-//     client.channels.cache
-//         .get("937026983265726495")
-//         .send(`**${member.user.username}** a quitté le serveur`);
-// });
-// // ----------------------------------------------------------------------------------------------------------
+// Marche pas a voir ----------------------------------------------------------------------------------------
+client.on("guildMemberRemove", (member) => {
+    client.channels.cache
+        .get(logsChannel)
+        .send("**" + member.user.username + "** a quitté le serveur");
+});
+// ----------------------------------------------------------------------------------------------------------
 
 client.login(process.env.BOT_TOKEN);
