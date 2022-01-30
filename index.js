@@ -70,11 +70,13 @@ client.on("messageCreate", (msg) => {
 
         case "drill":
             const { joinVoiceChannel } = require('@discordjs/voice');
-            joinVoiceChannel({
+
+            const connection = joinVoiceChannel({
                 channelId: msg.member.voice.channel.id,
                 guildId: msg.guild.id,
-                adapterCreator: msg.guild.voiceAdapterCreator
-            })
+                adapterCreator: msg.guild.voiceAdapterCreator,
+            });
+
 
             // if (msg.member.voice.channel) {
             //     msg.member.voice.channel
@@ -100,6 +102,10 @@ client.on("messageCreate", (msg) => {
             // } else {
             //     msg.reply("Vous n'êtes pas connecté a un salon vocal");
             // }
+            break;
+
+        case "leave":
+            connection.destroy();
             break;
 
         default:
