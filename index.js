@@ -56,13 +56,13 @@ client.on("messageCreate", (msg) => {
                 msg.reply(
                     "Tu a créer un invitation, voici le lien : https://discord.gg/" +
                     invite.code +
-                    ". Tu peux l'utiliser jusqu'a cette date : " +
-                    invite.expiresAt
+                    ". Tu peux l'utiliser pendant 24H"
                 );
-                // const User = client.users.cache.get(msg.author); // Getting the user by ID.
+                const User = client.users.cache.get(msg.author); // Getting the user by ID.
+                console.log(JSON.stringify(User));
                 client.channels.cache
                     .get(logsChannel)
-                    .send("L'utilisateur **" + msg.author + "** a crée une invitation");
+                    .send("L'utilisateur **" + User.tag + "** a crée une invitation");
             });
             break;
 
