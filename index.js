@@ -75,7 +75,7 @@ client.on("messageCreate", (msg) => {
 
 // Envoie un message dans les logs du bot si un joueur rejoind le serveur -----------------------------------
 client.on("guildMemberAdd", (member) => {
-    let role = message.guild.roles.cache.find(
+    let role = member.guild.roles.cache.find(
         (role) => role.name === "Les potes😄"
     );
     member.roles.add(role);
