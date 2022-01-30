@@ -4,7 +4,7 @@ const client = new Discord.Client({
     intents: [
         Intents.FLAGS.GUILDS,
         Intents.FLAGS.GUILD_MESSAGES,
-        /*Intents.FLAGS.GUILD_MEMBERS,     A VOIR           */
+        Intents.FLAGS.GUILD_MEMBERS, // A VOIR
     ],
 });
 require("dotenv").config();
@@ -25,9 +25,6 @@ client.on("error", (e) => {
 client.on("warn", (e) => {
     client.channels.cache.get(logsChannel).send("**Warn :**" + e.message)
 });
-// client.on("debug", (e) => {
-//     client.channels.cache.get(logsChannel).send("**Debug :**" + e.message);
-// });
 // ----------------------------------------------------------------------------------------------------
 
 client.on("messageCreate", (msg) => {
