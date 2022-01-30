@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const { joinVoiceChannel } = require("@discordjs/voice");
 const { Client, Intents } = require("discord.js");
 const client = new Discord.Client({
     intents: [
@@ -62,12 +63,18 @@ client.on("messageCreate", (msg) => {
                 // const User = client.users.cache.get(msg.author.tag); // Getting the user by ID.
                 client.channels.cache
                     .get(logsChannel)
-                    .send("L'utilisateur **" + msg.author.tag + "** a crée une invitation");
+                    .send(
+                        "L'utilisateur **" + msg.author.tag + "** a crée une invitation"
+                    );
             });
             break;
 
         case "drill":
-            msg.member.voice.channel.join();
+            joinVoiceChannel({
+                channelId: message.member.voice.channel.id,
+                guildId: message.guild.id,
+                adapterCreator: message.guild.voiceAdapterCreator,
+            });
             break;
 
         default:
