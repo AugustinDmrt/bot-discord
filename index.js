@@ -62,16 +62,10 @@ client.on("messageCreate", (msg) => {
             break;
 
         case "drill":
-            const connection = joinVoiceChannel({
+            joinVoiceChannel({
                 channelId: msg.member.voice.channel.id,
                 guildId: msg.guild.id,
                 adapterCreator: msg.guild.voiceAdapterCreator,
-            });
-
-            connection.on(joinVoiceChannel.Ready, () => {
-                client.channels.cache
-                    .get(logsChannel)
-                    .send("The connection has entered the Ready state - ready to play audio!");
             });
 
 
