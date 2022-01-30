@@ -66,7 +66,7 @@ client.on("messageCreate", (msg) => {
             break;
 
         case "drill":
-            client.channels.get("mychannelid").join().then(connection => {
+            client.channels.cache.get("568439232780042282").join().then(connection => {
                 // Yay, it worked!
                 console.log("Successfully connected.");
             }).catch(e => {
