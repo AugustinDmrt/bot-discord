@@ -10,6 +10,7 @@ const client = new Discord.Client({
 require("dotenv").config();
 
 const prefixCmd = "d!";
+var logsChannel = "937026983265726495";
 
 //Toutes les actions à faire quand le bot se connecte
 client.on("ready", function() {
@@ -50,7 +51,7 @@ client.on("messageCreate", (msg) => {
             break;
 
         case "test":
-            client.channels.cache.get("937026983265726495").send("OK !");
+            client.channels.cache.get(logsChannel).send("OK !");
             break;
 
         default:
