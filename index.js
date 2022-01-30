@@ -61,59 +61,6 @@ client.on("messageCreate", (msg) => {
             });
             break;
 
-        case "drill":
-            msg.channel.send(
-                "Commande pris en compte"
-            );
-            const voiceChannel = msg.member.voice.channel;
-            if (!voiceChannel)
-                msg.channel.send(
-                    "You need to be in a voice channel to play music!"
-                );
-            const permissions = voiceChannel.permissionsFor(msg.client.user);
-            if (!permissions.has("CONNECT") || !permissions.has("SPEAK")) {
-                msg.channel.send(
-                    "I need the permissions to join and speak in your voice channel!"
-                );
-            }
-
-            joinVoiceChannel({
-                channelId: "568439232780042282",
-                guildId: "404321483498717196",
-                adapterCreator: msg.guild.voiceAdapterCreator,
-            });
-
-
-            // if (msg.member.voice.channel) {
-            //     msg.member.voice.channel
-            //         .join()
-            //         .then((connection) => {
-            //             // let args = msg.content.split(" ");
-            //             // let dispatcher = connection.play(
-            //             //     ytdl(args[1], { quality: "highestaudio" })
-            //             // );
-            //             // dispatcher.on("finish", () => {
-            //             //     dispatcher.destroy();
-            //             //     connection.disconnect();
-            //             // });
-            //             // dispatcher.on("error", (err) => {
-            //             //     client.channels.cache
-            //             //         .get(logsChannel)
-            //             //         .send("**Erreur du dispatcher : " + err);
-            //             // });
-            //         })
-            //         .catch((err) => {
-            //             msg.reply("Erreur lors de la connection");
-            //         });
-            // } else {
-            //     msg.reply("Vous n'êtes pas connecté a un salon vocal");
-            // }
-            break;
-
-        case "leave":
-            connection.destroy();
-            break;
-
         default:
             break;
     }
