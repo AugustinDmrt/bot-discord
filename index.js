@@ -30,7 +30,7 @@ client.on("messageCreate", (msg) => {
                 .get(logsChannel)
                 .send(
                     "Le role de raciste a été atribué à **" +
-                    member.user.username +
+                    msg.member.user.username +
                     "** pour avoir dit le mot **" +
                     msg.content +
                     "**"
@@ -42,7 +42,7 @@ client.on("messageCreate", (msg) => {
                 .get(logsChannel)
                 .send(
                     "Le role de raciste a été atribué à **" +
-                    member.user.username +
+                    msg.member.user.username +
                     "** pour avoir dit le mot **" +
                     msg.content +
                     "**"
@@ -54,7 +54,7 @@ client.on("messageCreate", (msg) => {
                 .get(logsChannel)
                 .send(
                     "Le role de raciste a été atribué à **" +
-                    member.user.username +
+                    msg.member.user.username +
                     "** pour avoir dit le mot **" +
                     msg.content +
                     "**"
@@ -66,7 +66,7 @@ client.on("messageCreate", (msg) => {
                 .get(logsChannel)
                 .send(
                     "Le role de raciste a été atribué à **" +
-                    member.user.username +
+                    msg.member.user.username +
                     "** pour avoir dit le mot **" +
                     msg.content +
                     "**"
