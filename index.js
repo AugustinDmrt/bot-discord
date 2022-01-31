@@ -31,7 +31,7 @@ client.on("messageCreate", (msg) => {
             client.channels.cache
                 .get(logsChannel)
                 .send(
-                    "Le role de raciste a été atribué à **" +
+                    "Le rôle de raciste a été attribué à **" +
                     msg.member.user.username +
                     "** pour avoir dit le mot **" +
                     heSaid +
