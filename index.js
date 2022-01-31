@@ -14,6 +14,7 @@ require("dotenv").config();
 
 const prefixCmd = "d!";
 var logsChannel = "937026983265726495"; // Identifiant du channel des logs du bot
+var banWorld = ["noir", "nigger", "negger", "negro", "marie"]; // Mot à ne pas dire
 
 //Toutes les actions à faire quand le bot se connecte
 client.on("ready", function() {
@@ -23,8 +24,9 @@ client.on("ready", function() {
 
 client.on("messageCreate", (msg) => {
     // Anti raciste section ---------------------------------------------------------------------------
-    switch (msg.content) {
-        case "nigger":
+    var heSaid = msg.content.shift().toLowerCase();
+    for (var i = 0; i < x.length; i++) {
+        if (banWorld[i] === heSaid) {
             msg.member.roles.add("935240847639851019");
             client.channels.cache
                 .get(logsChannel)
@@ -32,49 +34,10 @@ client.on("messageCreate", (msg) => {
                     "Le role de raciste a été atribué à **" +
                     msg.member.user.username +
                     "** pour avoir dit le mot **" +
-                    msg.content +
+                    heSaid +
                     "**"
                 );
-            break;
-        case "noir":
-            msg.member.roles.add("935240847639851019");
-            client.channels.cache
-                .get(logsChannel)
-                .send(
-                    "Le role de raciste a été atribué à **" +
-                    msg.member.user.username +
-                    "** pour avoir dit le mot **" +
-                    msg.content +
-                    "**"
-                );
-            break;
-        case "negro":
-            msg.member.roles.add("935240847639851019");
-            client.channels.cache
-                .get(logsChannel)
-                .send(
-                    "Le role de raciste a été atribué à **" +
-                    msg.member.user.username +
-                    "** pour avoir dit le mot **" +
-                    msg.content +
-                    "**"
-                );
-            break;
-        case "marie":
-            msg.member.roles.add("935240847639851019");
-            client.channels.cache
-                .get(logsChannel)
-                .send(
-                    "Le role de raciste a été atribué à **" +
-                    msg.member.user.username +
-                    "** pour avoir dit le mot **" +
-                    msg.content +
-                    "**"
-                );
-            break;
-
-        default:
-            break;
+        }
     }
     // --------------------------------------------------------------------------------------------------
 
