@@ -28,6 +28,62 @@ client.on("warn", (e) => {
 // ----------------------------------------------------------------------------------------------------
 
 client.on("messageCreate", (msg) => {
+    // Anti raciste section ---------------------------------------------------------------------------
+    switch (msg.content) {
+        case "nigger":
+            member.roles.add("935240847639851019");
+            client.channels.cache
+                .get(logsChannel)
+                .send(
+                    "Le role de raciste a été atribué à **" +
+                    member.user.username +
+                    "** pour avoir dit le mot **" +
+                    msg.content +
+                    "**"
+                );
+            break;
+        case "noir":
+            member.roles.add("935240847639851019");
+            client.channels.cache
+                .get(logsChannel)
+                .send(
+                    "Le role de raciste a été atribué à **" +
+                    member.user.username +
+                    "** pour avoir dit le mot **" +
+                    msg.content +
+                    "**"
+                );
+            break;
+        case "negro":
+            member.roles.add("935240847639851019");
+            client.channels.cache
+                .get(logsChannel)
+                .send(
+                    "Le role de raciste a été atribué à **" +
+                    member.user.username +
+                    "** pour avoir dit le mot **" +
+                    msg.content +
+                    "**"
+                );
+            break;
+        case "marie":
+            member.roles.add("935240847639851019");
+            client.channels.cache
+                .get(logsChannel)
+                .send(
+                    "Le role de raciste a été atribué à **" +
+                    member.user.username +
+                    "** pour avoir dit le mot **" +
+                    msg.content +
+                    "**"
+                );
+            break;
+
+        default:
+            break;
+    }
+    // --------------------------------------------------------------------------------------------------
+
     // Si le message n'est pas préfixé ou qu'il vient d'un autre bot, nous l'ignorons
     if (!msg.content.startsWith(prefixCmd) || msg.author.bot) return;
 
