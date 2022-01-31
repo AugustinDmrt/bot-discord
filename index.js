@@ -25,7 +25,7 @@ client.on("messageCreate", (msg) => {
     // Anti raciste section ---------------------------------------------------------------------------
     switch (msg.content) {
         case "nigger":
-            member.roles.add("935240847639851019");
+            msg.member.roles.add("935240847639851019");
             client.channels.cache
                 .get(logsChannel)
                 .send(
@@ -37,7 +37,7 @@ client.on("messageCreate", (msg) => {
                 );
             break;
         case "noir":
-            member.roles.add("935240847639851019");
+            msg.member.roles.add("935240847639851019");
             client.channels.cache
                 .get(logsChannel)
                 .send(
@@ -49,7 +49,7 @@ client.on("messageCreate", (msg) => {
                 );
             break;
         case "negro":
-            member.roles.add("935240847639851019");
+            msg.member.roles.add("935240847639851019");
             client.channels.cache
                 .get(logsChannel)
                 .send(
@@ -61,7 +61,7 @@ client.on("messageCreate", (msg) => {
                 );
             break;
         case "marie":
-            member.roles.add("935240847639851019");
+            msg.member.roles.add("935240847639851019");
             client.channels.cache
                 .get(logsChannel)
                 .send(
