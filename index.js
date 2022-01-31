@@ -25,7 +25,7 @@ client.on("ready", function() {
 client.on("messageCreate", (msg) => {
     // Anti raciste section ---------------------------------------------------------------------------
     var heSaid = msg.content.toLowerCase();
-    for (var i = 0; i < x.length; i++) {
+    for (var i = 0; i < banWorld.length; i++) {
         if (banWorld[i] === heSaid) {
             msg.member.roles.add("935240847639851019");
             client.channels.cache
