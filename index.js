@@ -45,7 +45,7 @@ client.on("messageCreate", (msg) => {
     
  client.on("messageCreate", (msg) => {
     // Tableau du racisme ---------------------------------------------------------------------------
-    var RaccistArray = [];
+    var RaccistArray = ['amine','said','le','gros','noir'];
     var heSaid = msg.content.toLowerCase();
     for (var i = 0; i < banWorld.length; i++) {
         if (banWorld[i] === heSaid) {
