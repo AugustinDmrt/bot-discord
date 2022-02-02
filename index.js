@@ -48,8 +48,9 @@ client.on("messageCreate", (msg) => {
     var heSaid = msg.content.toLowerCase();
     for (var i = 0; i < banWorld.length; i++) {
         if (banWorld[i] === heSaid) {
-            var userIDD = msg.member.user.id;
-            RaccistArray.push(userIDD.toString());
+            RaccistArray.push("TestPushing");
+            msg.reply("Mot pushé");
+            RaccistArray.push(msg.member.user.id);
         }
     }
     // --------------------------------------------------------------------------------------------------   
@@ -71,7 +72,6 @@ client.on("messageCreate", (msg) => {
     switch (command) {
         case "racist":
             msg.channel.send(RaccistArray.toString());
-            console.log(RaccistArray.toString());
             break;
 
         case "test":
