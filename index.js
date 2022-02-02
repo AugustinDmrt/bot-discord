@@ -49,8 +49,7 @@ client.on("messageCreate", (msg) => {
     for (var i = 0; i < banWorld.length; i++) {
         if (banWorld[i] === heSaid) {
             var userIDD = msg.member.user.id;
-            // RaccistArray.push();
-            console.log(userIDD.toString());
+            RaccistArray.push(userIDD.toString());
         }
     }
     // --------------------------------------------------------------------------------------------------   
@@ -71,9 +70,8 @@ client.on("messageCreate", (msg) => {
 
     switch (command) {
         case "racist":
-            //msg.channel.send(RaccistArray.toString());
-            // console.log(RaccistArray.toString());
-            msg.channel.send("bite");
+            msg.channel.send(RaccistArray.toString());
+            console.log(RaccistArray.toString());
             break;
 
         case "test":
