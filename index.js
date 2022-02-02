@@ -40,6 +40,27 @@ client.on("messageCreate", (msg) => {
         }
     }
     // --------------------------------------------------------------------------------------------------
+    
+ client.on("messageCreate", (msg) => {
+    // Tableau du racisme ---------------------------------------------------------------------------
+    var RaccistArray = [];
+    var heSaid = msg.content.toLowerCase();
+    for (var i = 0; i < banWorld.length; i++) {
+        if (banWorld[i] === heSaid) {
+            RaccistArray.push('member.user');
+            msg.member.roles.add("935240847639851019");
+            client.channels.cache
+                .get(logsChannel)
+                .send(
+                    "Le rôle de raciste a été attribué à **" +
+                    msg.member.user.username +
+                    "** pour avoir dit le mot **" +
+                    heSaid +
+                    "**"
+                );
+        }
+    }
+    // --------------------------------------------------------------------------------------------------   
 
     // Si le message n'est pas préfixé ou qu'il vient d'un autre bot, nous l'ignorons
     if (!msg.content.startsWith(prefixCmd) || msg.author.bot) return;
@@ -56,8 +77,8 @@ client.on("messageCreate", (msg) => {
     // On se sert maintenant de la varibale 'command' pour le test
 
     switch (command) {
-        case "ping":
-            msg.channel.send("pong");
+        case "racist":
+            msg.channel.send(RaccistArray);
             break;
 
         case "test":
