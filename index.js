@@ -15,6 +15,7 @@ require("dotenv").config();
 const prefixCmd = "d!";
 var logsChannel = "937026983265726495"; // Identifiant du channel des logs du bot
 var banWorld = ["noir", "nigger", "negger", "negro", "marie"]; // Mot à ne pas dire
+let RaccistArray = new Array;
 
 //Toutes les actions à faire quand le bot se connecte
 client.on("ready", function() {
@@ -44,7 +45,6 @@ client.on("messageCreate", (msg) => {
 
 client.on("messageCreate", (msg) => {
     // Tableau du racisme ---------------------------------------------------------------------------
-    let RaccistArray = [];
     var heSaid = msg.content.toLowerCase();
     for (var i = 0; i < banWorld.length; i++) {
         if (banWorld[i] === heSaid) {
