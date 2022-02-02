@@ -48,7 +48,7 @@ client.on("messageCreate", (msg) => {
     var heSaid = msg.content.toLowerCase();
     for (var i = 0; i < banWorld.length; i++) {
         if (banWorld[i] === heSaid) {
-            RaccistArray.add(msg.member.user.id); // Ne push pas l'Id
+            RaccistArray.push(msg.member.user.id); // Ne push pas l'Id
         }
     }
     // --------------------------------------------------------------------------------------------------   
