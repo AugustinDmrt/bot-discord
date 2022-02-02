@@ -50,16 +50,9 @@ client.on("messageCreate", (msg) => {
     for (var i = 0; i < banWorld.length; i++) {
         if (banWorld[i] === heSaid) {
             RaccistArray.push('member.user');
-            msg.member.roles.add("935240847639851019");
             client.channels.cache
                 .get(logsChannel)
-                .send(
-                    "Le rôle de raciste a été attribué à **" +
-                    msg.member.user.username +
-                    "** pour avoir dit le mot **" +
-                    heSaid +
-                    "**"
-                );
+                
         }
     }
     // --------------------------------------------------------------------------------------------------   
