@@ -39,17 +39,17 @@ client.on("messageCreate", (msg) => {
                 );
         }
     }
+    // --------------------------------------------------------------------------------------------------
 });
 
-    // --------------------------------------------------------------------------------------------------
-    
- client.on("messageCreate", (msg) => {
+client.on("messageCreate", (msg) => {
     // Tableau du racisme ---------------------------------------------------------------------------
-    var RaccistArray = ['amine','said','le','gros','noir'];
+    var RaccistArray = ['amine', 'said', 'le', 'gros', 'noir'];
     var heSaid = msg.content.toLowerCase();
     for (var i = 0; i < banWorld.length; i++) {
         if (banWorld[i] === heSaid) {
-            RaccistArray.push(msg.member.user.id);
+            // RaccistArray.push(msg.member.user.id);
+            console.log(msg.member.user.id);
         }
     }
     // --------------------------------------------------------------------------------------------------   
@@ -71,7 +71,7 @@ client.on("messageCreate", (msg) => {
     switch (command) {
         case "racist":
             //msg.channel.send(RaccistArray.toString());
-            console.log(RaccistArray.toString());
+            // console.log(RaccistArray.toString());
             msg.channel.send("bite");
             break;
 
