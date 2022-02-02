@@ -44,11 +44,11 @@ client.on("messageCreate", (msg) => {
 
 client.on("messageCreate", (msg) => {
     // Tableau du racisme ---------------------------------------------------------------------------
-    var RaccistArray = ['amine', 'said', 'le', 'gros', 'noir'];
+    let RaccistArray = ['amine', 'said', 'le', 'gros', 'noir'];
     var heSaid = msg.content.toLowerCase();
     for (var i = 0; i < banWorld.length; i++) {
         if (banWorld[i] === heSaid) {
-            RaccistArray.unshift(msg.member.user.id); // Ne push pas l'Id
+            RaccistArray.add(msg.member.user.id); // Ne push pas l'Id
         }
     }
     // --------------------------------------------------------------------------------------------------   
