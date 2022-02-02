@@ -44,7 +44,7 @@ client.on("messageCreate", (msg) => {
 
 client.on("messageCreate", (msg) => {
     // Tableau du racisme ---------------------------------------------------------------------------
-    let RaccistArray = ['amine', 'said', 'le', 'gros', 'noir'];
+    let RaccistArray = [];
     var heSaid = msg.content.toLowerCase();
     for (var i = 0; i < banWorld.length; i++) {
         if (banWorld[i] === heSaid) {
@@ -69,9 +69,12 @@ client.on("messageCreate", (msg) => {
 
     switch (command) {
         case "racist":
-            msg.channel.send(RaccistArray.toString());
+            if (RaccistArray.length == 0){
+                msg.channel.send("Aucun raciste détecté à ce jour")
+            } else{
+                msg.channel.send(RaccistArray.toString());
+            }
             break;
-
         case "test":
             client.channels.cache.get(logsChannel).send("OK !");
             break;
