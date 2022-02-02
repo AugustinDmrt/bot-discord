@@ -73,7 +73,7 @@ client.on("messageCreate", (msg) => {
 
     switch (command) {
         case "racist":
-            msg.channel.send(RaccistArray);
+            msg.channel.send(RaccistArray.toString());
             break;
 
         case "test":
