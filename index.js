@@ -74,6 +74,7 @@ client.on("messageCreate", (msg) => {
     switch (command) {
         case "racist":
             //msg.channel.send(RaccistArray.toString());
+            console.log(RaccistArray.toString());
             msg.channel.send("bite");
             break;
 
