@@ -47,7 +47,10 @@ client.on("ready", function() {
     }
     
     let donnees = JSON.stringify(userInfo);
-    fs.writeFileSync('database.json', donnees);
+    fs.writeFile('database.json', donnees, function(erreur) {
+        if (erreur) {
+            console.log(erreur)}
+    });
     console.log("Données inseré");
 
     console.log(data[0][12345].username);
