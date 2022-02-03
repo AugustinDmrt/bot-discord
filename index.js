@@ -22,6 +22,7 @@ client.on("ready", function() {
     console.log("Bot ON");
     client.channels.cache.get(logsChannel).send("Bot ON");
 
+    // Lecture du json --------------------------------------------
     const fs = require('fs');
     const path = require('path');
 
@@ -35,7 +36,18 @@ client.on("ready", function() {
     console.log(data[0][249522071581753354n].xp);
     console.log(data[0][249522071581753354n].level);
     console.log("-----------");
+    // ------------------------------------------------------------
+
+    let userInfo = {
+        "username": "Test",
+        "xp": 45,
+        "level": 50
+    }
     
+    let donnees = JSON.stringify(userInfo);
+    fs.writeFileSync('database.json', donnees);
+    console.log("Données inseré");
+
 });
 
 client.on("messageCreate", (msg) => {
