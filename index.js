@@ -37,7 +37,7 @@ client.on("messageCreate", (msg) => {
                         "Le rôle de raciste a été attribué à **" +
                         msg.member.user.username +
                         "** pour avoir dit le mot **" +
-                        heSaid +
+                        heSaid[j] +
                         "**"
                     );
             }
