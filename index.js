@@ -12,15 +12,6 @@ const client = new Discord.Client({
 });
 require("dotenv").config();
 
-var xhr = new XMLHttpRequest();
-xhr.open("GET", "./database.json");
-xhr.onreadystatechange = function() {
-
-}
-xhr.send();
-
-var jsonData = JSON.parse(database);
-
 const prefixCmd = "d!";
 var logsChannel = "937026983265726495"; // Identifiant du channel des logs du bot
 var banWorld = ["noir", "nigger", "negger", "negro", "marie"]; // Mot à ne pas dire
@@ -30,6 +21,13 @@ let RaccistArray = new Array;
 client.on("ready", function() {
     console.log("Bot ON");
     client.channels.cache.get(logsChannel).send("Bot ON");
+
+    const fs = require('fs');
+    const path = require('path');
+
+    let rawdata = fs.readFileSync(path.resolve(__dirname, 'database.json'));
+    let data = JSON.parse(rawdata);
+    console.log(data);
 });
 
 client.on("messageCreate", (msg) => {

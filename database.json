@@ -1,6 +1,7 @@
 [{
-    "userId": "123",
-    "username": "Toto",
-    "xp": 1,
-    "level": 74
+    "20000000000": {
+        "username": "Test",
+        "xp": 45,
+        "level": 15
+    }
 }]
