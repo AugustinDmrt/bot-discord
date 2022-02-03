@@ -29,8 +29,8 @@ client.on("ready", function() {
     let data = JSON.parse(rawdata);
     console.log(data);
     console.log(data[0]);
-    console.log(data[0].level);
-    console.log(data[0][level]);
+    console.log(data[0][12345].level);
+    console.log(data[0][12345][level]);
 });
 
 client.on("messageCreate", (msg) => {
