@@ -46,7 +46,7 @@ client.on("messageCreate", (msg) => {
         }
     }
     if (sanction == true) {
-        msg.reply("vous avez été sanctionné sur le message !");
+        msg.reply("Vous avez été sanctionné sur le message !");
         sanction = false;
     }
 
