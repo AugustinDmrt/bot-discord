@@ -27,9 +27,7 @@ client.on("ready", function() {
 
     let rawdata = fs.readFileSync(path.resolve(__dirname, 'database.json'));
     let data = JSON.parse(rawdata);
-    console.log(data[0][326660584848490496].username);
-    console.log(data[0][326660584848490496].xp);
-    console.log(data[0][326660584848490496].level);
+    console.log(data[0][12345].level);
     console.log("-----------");
 });
 
