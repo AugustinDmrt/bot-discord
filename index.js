@@ -39,14 +39,21 @@ client.on("ready", function() {
     // ------------------------------------------------------------
 
     let userInfo = {
-        "username": "Test",
-        "xp": 45,
-        "level": 50
+        "123456789" :{
+            "username": "Test",
+            "xp": 45,
+            "level": 50
+        }
     }
     
     let donnees = JSON.stringify(userInfo);
     fs.writeFileSync('database.json', donnees);
     console.log("Données inseré");
+
+    console.log(data[0][123456789].username);
+    console.log(data[0][123456789].xp);
+    console.log(data[0][123456789].level);
+    console.log("-----------");
 
 });
 
