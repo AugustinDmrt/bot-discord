@@ -25,21 +25,25 @@ client.on("ready", function() {
 
 client.on("messageCreate", (msg) => {
     // Anti raciste section ---------------------------------------------------------------------------
-    var heSaid = msg.content.toLowerCase();
-    for (var i = 0; i < banWorld.length; i++) {
-        if (banWorld[i] === heSaid) {
-            msg.member.roles.add("935240847639851019");
-            client.channels.cache
-                .get(logsChannel)
-                .send(
-                    "Le rôle de raciste a été attribué à **" +
-                    msg.member.user.username +
-                    "** pour avoir dit le mot **" +
-                    heSaid +
-                    "**"
-                );
+    // var heSaid = msg.content.toLowerCase();
+    var heSaid = msg.content.split(" ");
+    for (var j = 0; j < heSaid.length; j++) {
+        for (var i = 0; i < banWorld.length; i++) {
+            if (banWorld[i] === heSaid[j]) {
+                msg.member.roles.add("935240847639851019");
+                client.channels.cache
+                    .get(logsChannel)
+                    .send(
+                        "Le rôle de raciste a été attribué à **" +
+                        msg.member.user.username +
+                        "** pour avoir dit le mot **" +
+                        heSaid +
+                        "**"
+                    );
+            }
         }
     }
+
     // --------------------------------------------------------------------------------------------------
 });
 
@@ -48,7 +52,7 @@ client.on("messageCreate", (msg) => {
     var heSaid = msg.content.toLowerCase();
     for (var i = 0; i < banWorld.length; i++) {
         if (banWorld[i] === heSaid) {
-            RaccistArray.push(msg.member.user.id); // Ne push pas l'Id
+            RaccistArray.push(msg.member.user.id);
         }
     }
     // --------------------------------------------------------------------------------------------------   
@@ -69,9 +73,9 @@ client.on("messageCreate", (msg) => {
 
     switch (command) {
         case "racist":
-            if (RaccistArray.length == 0){
+            if (RaccistArray.length == 0) {
                 msg.channel.send("Aucun raciste détecté à ce jour")
-            } else{
+            } else {
                 msg.channel.send(RaccistArray.toString());
             }
             break;
