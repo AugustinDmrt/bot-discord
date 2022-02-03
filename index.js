@@ -27,14 +27,14 @@ client.on("ready", function() {
 
     let rawdata = fs.readFileSync(path.resolve(__dirname, 'database.json'));
     let data = JSON.parse(rawdata);
-    console.log(data[0][326660584848490496].username);
+    // console.log(data[0][326660584848490496].username);
     console.log(data[0][326660584848490496].xp);
     console.log(data[0][326660584848490496].level);
-    console.log("-----------")
-    console.log(data[0][249522071581753354].username);
+    console.log("-----------");
+    // console.log(data[0][249522071581753354].username);
     console.log(data[0][249522071581753354].xp);
     console.log(data[0][249522071581753354].level);
-    console.log("-----------")
+    console.log("-----------");
 });
 
 client.on("messageCreate", (msg) => {
