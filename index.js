@@ -39,11 +39,9 @@ client.on("ready", function() {
     // ------------------------------------------------------------
 
     let userInfo = {
-        "12345": {
-            "username": "Test",
-            "xp": 45,
-            "level": 50
-        }
+        "username": "Test",
+        "xp": 45,
+        "level": 50
     }
     
     fs.writeFile("./database.json", JSON.stringify(userInfo, null, 4), err => {
