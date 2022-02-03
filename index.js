@@ -28,6 +28,8 @@ client.on("ready", function() {
     let rawdata = fs.readFileSync(path.resolve(__dirname, 'database.json'));
     let data = JSON.parse(rawdata);
     console.log(data);
+    console.log(data[12345]);
+    console.log(data[12345].level);
 });
 
 client.on("messageCreate", (msg) => {
