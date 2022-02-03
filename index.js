@@ -25,8 +25,9 @@ client.on("ready", function() {
 
 client.on("messageCreate", (msg) => {
     // Anti raciste section ---------------------------------------------------------------------------
-    // var heSaid = msg.content.toLowerCase();
-    var heSaid = msg.content.split(" ");
+    var sanction = false;
+    var heSaid = msg.content.toLowerCase();
+    heSaid = heSaid.split(" ");
     for (var j = 0; j < heSaid.length; j++) {
         for (var i = 0; i < banWorld.length; i++) {
             if (banWorld[i] === heSaid[j]) {
@@ -40,8 +41,13 @@ client.on("messageCreate", (msg) => {
                         heSaid[j] +
                         "**"
                     );
+                sanction = true;
             }
         }
+    }
+    if (sanction == true) {
+        msg.reply("vous avez été sanctionné sur le message !");
+        sanction = false;
     }
 
     // --------------------------------------------------------------------------------------------------
