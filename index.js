@@ -38,13 +38,14 @@ client.on("ready", function() {
     console.log("-----------");
     // ------------------------------------------------------------
 
+    // Ecriture dans le Json --------------------------------------------
     let userInfo = {
         "username": "Test",
         "xp": 45,
         "level": 50
     }
     
-    fs.writeFile("./database.json", JSON.stringify(userInfo, null, 4), err => {
+    fs.writeFile("./database.json", JSON.stringify(userInfo, null, 4), err => {  // Marche pas 
         if(err) console.log(err)
     });
     
@@ -54,6 +55,7 @@ client.on("ready", function() {
     console.log(data[0][12345].xp);
     console.log(data[0][12345].level);
     console.log("-----------");
+    // ------------------------------------------------------------
 
 });
 
