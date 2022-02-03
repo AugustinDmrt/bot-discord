@@ -26,7 +26,7 @@ client.on("ready", function() {
     const fs = require('fs');
     const path = require('path');
 
-    let rawdata = fs.readFileSync(path.resolve(__dirname, 'database.json'));
+    let rawdata = fs.readFileSync(path.resolve(__dirname, './database.json'));
     let data = JSON.parse(rawdata);
     console.log(data[0][326660584848490496n].username);
     console.log(data[0][326660584848490496n].xp);
@@ -46,11 +46,10 @@ client.on("ready", function() {
         }
     }
     
-    let donnees = JSON.stringify(userInfo);
-    fs.writeFile('database.json', donnees, function(erreur) {
-        if (erreur) {
-            console.log(erreur)}
+    fs.writeFile("./database.json", JSON.stringify(userInfo, null, 4), err => {
+        if(err) console.log(err)
     });
+    
     console.log("Données inseré");
 
     console.log(data[0][12345].username);
