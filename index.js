@@ -12,6 +12,15 @@ const client = new Discord.Client({
 });
 require("dotenv").config();
 
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "./database.json");
+xhr.onreadystatechange = function() {
+
+}
+xhr.send();
+
+var jsonData = JSON.parse(database);
+
 const prefixCmd = "d!";
 var logsChannel = "937026983265726495"; // Identifiant du channel des logs du bot
 var banWorld = ["noir", "nigger", "negger", "negro", "marie"]; // Mot à ne pas dire
