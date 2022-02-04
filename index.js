@@ -47,14 +47,14 @@ client.on("ready", function() {
         }
     }
 
-    let newData = JSON.stringify(userInfo);
+    // let newData = JSON.stringify(userInfo);
         
 
     
 	
     const mergedObject = {
     ...data,
-    ...newData
+    ...userInfo
     };
 
     fs.writeFileSync(path.resolve(__dirname, './database.json'), mergedObject);
