@@ -57,7 +57,7 @@ client.on("ready", function() {
 
     console.log(mergedObject)
 
-    // fs.writeFileSync(path.resolve(__dirname, './database.json'), mergedObject);
+    fs.writeFileSync(path.resolve(__dirname, './database.json'), mergedObject);
     
     // // console.log(data[12345].username);
     // // console.log(data[12345].xp);
