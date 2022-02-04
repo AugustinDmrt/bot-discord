@@ -50,9 +50,7 @@ client.on("ready", function() {
         }
     }
     
-    fs.writeFile("./database.json", JSON.stringify(userInfo), err => {  // Marche pas 
-        if(err) console.log(err)
-    });
+    fs.writeFileSync(path.resolve(__dirname, './database.json'), JSON.stringify(userInfo));
     
     console.log("Données inseré");
 
