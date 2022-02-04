@@ -40,10 +40,10 @@ client.on("ready", function() {
 
     // Ecriture dans le Json --------------------------------------------
      rawdata = fs.readFileSync(path.resolve(__dirname, './database.json'));
-     data = JSON.parse(rawdata);
+    let data = JSON.parse(rawdata);
 
     let userInfo = {
-        12345: {
+        "12345": {
         "username": "Test",
         "xp": 45,
         "level": 50
@@ -56,9 +56,9 @@ client.on("ready", function() {
     
     console.log("Données inseré");
 
-    console.log(data["12345"].username);
-    console.log(data["12345"].xp);
-    console.log(data["12345"].level);
+    console.log(data[12345].username);
+    console.log(data[12345].xp);
+    console.log(data[12345].level);
     console.log("-----------");
     // ------------------------------------------------------------
 
