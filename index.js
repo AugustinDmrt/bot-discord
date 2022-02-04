@@ -47,27 +47,28 @@ client.on("ready", function() {
         }
     }
 
-    // let newData = JSON.stringify(userInfo);
+    let newData = JSON.stringify(userInfo);
         
-
+    console.log(userInfo);
+    console.log(newData);
     
 	
-    const mergedObject = {
-    ...data,
-    ...userInfo
-    };
+    // const mergedObject = {
+    // ...data,
+    // ...userInfo
+    // };
 
-    fs.writeFileSync(path.resolve(__dirname, './database.json'), mergedObject);
+    // fs.writeFileSync(path.resolve(__dirname, './database.json'), mergedObject);
     
-    // console.log(data[12345].username);
-    // console.log(data[12345].xp);
-    // console.log(data[12345].level);
-    // console.log("-----------");
+    // // console.log(data[12345].username);
+    // // console.log(data[12345].xp);
+    // // console.log(data[12345].level);
+    // // console.log("-----------");
 
-    let rawdata2 = fs.readFileSync(path.resolve(__dirname, './database.json'));
-    let data2 = JSON.parse(rawdata2);
+    // let rawdata2 = fs.readFileSync(path.resolve(__dirname, './database.json'));
+    // let data2 = JSON.parse(rawdata2);
 
-    console.log(data2);
+    // console.log(data2);
     // ------------------------------------------------------------
 
 });
