@@ -39,6 +39,9 @@ client.on("ready", function() {
     // ------------------------------------------------------------
 
     // Ecriture dans le Json --------------------------------------------
+    let rawdata = fs.readFileSync(path.resolve(__dirname, './database.json'));
+    let data = JSON.parse(rawdata);
+    
     let userInfo = {
         12345: {
         "username": "Test",
