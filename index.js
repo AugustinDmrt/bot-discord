@@ -55,8 +55,8 @@ client.on("ready", function() {
     let data2 = JSON.parse(rawdata2);
 	
         const mergedObject = {
-        ...data,
-        ...data2
+        ...data2,
+        ...data
         };
     
     // console.log(data[12345].username);
