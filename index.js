@@ -57,8 +57,9 @@ client.on("ready", function() {
     // console.log(data[12345].username);
     // console.log(data[12345].xp);
     // console.log(data[12345].level);
-    console.log("-----------");
+    // console.log("-----------");
 
+    console.log(JSON.stringify(userInfo));
     console.log(data);
     // ------------------------------------------------------------
 
