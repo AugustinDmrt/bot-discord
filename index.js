@@ -49,14 +49,13 @@ client.on("ready", function() {
 
     let newData = JSON.stringify(userInfo);
         
-    console.log(userInfo);
-    console.log(newData);
-    
 	
-    // const mergedObject = {
-    // ...data,
-    // ...userInfo
-    // };
+    const mergedObject = {
+    ...data,
+    ...newData
+    };
+
+    console.log(mergedObject)
 
     // fs.writeFileSync(path.resolve(__dirname, './database.json'), mergedObject);
     
