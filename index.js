@@ -39,9 +39,6 @@ client.on("ready", function() {
     // ------------------------------------------------------------
 
     // Ecriture dans le Json --------------------------------------------
-     rawdata = fs.readFileSync(path.resolve(__dirname, './database.json'));
-     data = JSON.parse(rawdata);
-
     let userInfo = {
         '12345': {
             'username': 'Test',
@@ -53,6 +50,9 @@ client.on("ready", function() {
     fs.writeFileSync(path.resolve(__dirname, './database.json'), JSON.stringify(userInfo));
     
     console.log("Données inseré");
+
+    rawdata = fs.readFileSync(path.resolve(__dirname, './database.json'));
+    data = JSON.parse(rawdata);
 
     // console.log(data[12345].username);
     // console.log(data[12345].xp);
