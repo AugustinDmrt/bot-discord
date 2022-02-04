@@ -46,25 +46,28 @@ client.on("ready", function() {
             'level': 50
         }
     }
-    
-    fs.writeFileSync(path.resolve(__dirname, './database.json'), JSON.stringify(userInfo));
-    
-    console.log("Données inseré");
 
-    let rawdata2 = fs.readFileSync(path.resolve(__dirname, './database.json'));
-    let data2 = JSON.parse(rawdata2);
+    let newData = JSON.stringify(userInfo);
+        
+
+    
 	
-        const mergedObject = {
-        ...data2,
-        ...data
-        };
+    const mergedObject = {
+    ...data,
+    ...newData
+    };
+
+    fs.writeFileSync(path.resolve(__dirname, './database.json'), mergedObject);
     
     // console.log(data[12345].username);
     // console.log(data[12345].xp);
     // console.log(data[12345].level);
     // console.log("-----------");
 
-    console.log(mergedObject);
+    let rawdata2 = fs.readFileSync(path.resolve(__dirname, './database.json'));
+    let data2 = JSON.parse(rawdata2);
+
+    console.log(data2);
     // ------------------------------------------------------------
 
 });
