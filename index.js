@@ -43,11 +43,11 @@ client.on("ready", function() {
      data = JSON.parse(rawdata);
 
     let userInfo = {
-        "12345": {
-        "username": "Test",
-        "xp": 45,
-        "level": 50
-        }
+        // "12345": {
+            "username": "Test",
+            "xp": 45,
+            "level": 50
+        // }
     }
     
     fs.writeFile("./database.json", JSON.stringify(userInfo, null, 4), err => {  // Marche pas 
