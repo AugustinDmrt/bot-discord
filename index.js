@@ -39,6 +39,9 @@ client.on("ready", function() {
     // ------------------------------------------------------------
 
     // Ecriture dans le Json --------------------------------------------
+    
+    // NE MARCHE PAS
+    
     let userInfo = {
         "12345": {
             "username": "Test",
@@ -57,17 +60,10 @@ client.on("ready", function() {
 
     // console.log(mergedObject)
 
-    fs.writeFileSync(path.resolve(__dirname, './database.json'), mergedObject.toString());
-    
-    // // console.log(data[12345].username);
-    // // console.log(data[12345].xp);
-    // // console.log(data[12345].level);
-    // // console.log("-----------");
+    fs.writeFileSync(path.resolve(__dirname, './database.json'), mergedObject.toString()); // ecrit dans le fichier en string
 
-    let rawdata2 = fs.readFileSync(path.resolve(__dirname, './database.json'));
-    let data2 = JSON.parse(rawdata2);
+    // NE MARCHE PAS
 
-    console.log(data2);
     // ------------------------------------------------------------
 
 });
