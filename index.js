@@ -55,7 +55,7 @@ client.on("ready", function() {
     ...userInfo
     };
 
-    console.log(mergedObject)
+    // console.log(mergedObject)
 
     fs.writeFileSync(path.resolve(__dirname, './database.json'), mergedObject.toString());
     
@@ -64,10 +64,10 @@ client.on("ready", function() {
     // // console.log(data[12345].level);
     // // console.log("-----------");
 
-    // let rawdata2 = fs.readFileSync(path.resolve(__dirname, './database.json'));
-    // let data2 = JSON.parse(rawdata2);
+    let rawdata2 = fs.readFileSync(path.resolve(__dirname, './database.json'));
+    let data2 = JSON.parse(rawdata2);
 
-    // console.log(data2);
+    console.log(data2);
     // ------------------------------------------------------------
 
 });
