@@ -43,10 +43,10 @@ client.on("ready", function() {
      data = JSON.parse(rawdata);
 
     let userInfo = {
-        "12345": {
-            "username": "Test",
-            "xp": 45,
-            "level": 50
+        '12345': {
+            'username': 'Test',
+            'xp': 45,
+            'level': 50
         }
     }
     
