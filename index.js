@@ -39,22 +39,24 @@ client.on("ready", function() {
     // ------------------------------------------------------------
 
     // Ecriture dans le Json --------------------------------------------
-    // let userInfo = {
-    //     "username": "Test",
-    //     "xp": 45,
-    //     "level": 50
-    // }
+    let userInfo = {
+        12345: {
+        "username": "Test",
+        "xp": 45,
+        "level": 50
+        }
+    }
     
-    // fs.writeFile("./database.json", JSON.stringify(userInfo, null, 4), err => {  // Marche pas 
-    //     if(err) console.log(err)
-    // });
+    fs.writeFile("./database.json", JSON.stringify(userInfo, null, 4), err => {  // Marche pas 
+        if(err) console.log(err)
+    });
     
-    // console.log("Données inseré");
+    console.log("Données inseré");
 
-    // console.log(data[0][12345].username);
-    // console.log(data[0][12345].xp);
-    // console.log(data[0][12345].level);
-    // console.log("-----------");
+    console.log(data[12345].username);
+    console.log(data[12345].xp);
+    console.log(data[12345].level);
+    console.log("-----------");
     // ------------------------------------------------------------
 
 });
