@@ -60,6 +60,8 @@ client.on("ready", function() {
     console.log(data[12345].xp);
     console.log(data[12345].level);
     console.log("-----------");
+
+    console.log(data);
     // ------------------------------------------------------------
 
 });
