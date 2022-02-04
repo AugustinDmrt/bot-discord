@@ -40,10 +40,10 @@ client.on("ready", function() {
 
     // Ecriture dans le Json --------------------------------------------
     let userInfo = {
-        '12345': {
-            'username': 'Test',
-            'xp': 45,
-            'level': 50
+        "12345": {
+            "username": "Test",
+            "xp": 45,
+            "level": 50
         }
     }
 
