@@ -204,27 +204,21 @@ client.on('interactionCreate', async interaction => {
 	if (commandName === 'addtag') {
 		// [delta]
         client.channels.cache.get(logsChannel).send("delta !");
-            break;
 	} else if (commandName === 'tag') {
 		// [epsilon]
         client.channels.cache.get(logsChannel).send("epsilon !");
-            break;
 	} else if (commandName === 'edittag') {
 		// [zeta]
         client.channels.cache.get(logsChannel).send("zeta !");
-            break;
 	} else if (commandName === 'taginfo') {
 		// [theta]
         client.channels.cache.get(logsChannel).send("theta !");
-            break;
 	} else if (commandName === 'showtags') {
 		// [lambda]
         client.channels.cache.get(logsChannel).send("lambda !");
-            break;
 	} else if (commandName === 'removetag') {
 		// [mu]
         client.channels.cache.get(logsChannel).send("mu !");
-            break;
 	}
 });
 
