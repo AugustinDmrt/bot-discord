@@ -14,7 +14,10 @@
     "discord.js": "^13.6.0",
     "dotenv": "^14.3.2",
     "ffmpeg-static": "^4.4.1",
+    "mysql": "^2.18.1",
     "opusscript": "^0.0.8",
+    "sequelize": "^6.16.1",
+    "sqlite3": "^5.0.2",
     "ytdl-core": "^4.10.0"
   },
   "engines": {
