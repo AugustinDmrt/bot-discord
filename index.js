@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const ytdl = require("ytdl-core");
 const { joinVoiceChannel } = require('@discordjs/voice');
 const { Client, Intents } = require("discord.js");
+const Sequelize = require('sequelize');
 const client = new Discord.Client({
     intents: [
         Intents.FLAGS.GUILDS,
@@ -178,10 +179,6 @@ client.on("guildMemberRemove", (member) => {
 
 ////////////////// TEST DATABASE ///////////////////////////////////////////////////////////////////////////
 
-const Sequelize = require('sequelize');
-const { Client, Intents } = require('discord.js');
-
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
 // [alpha]
 const sequelize = new Sequelize('database', 'user', 'password', {
