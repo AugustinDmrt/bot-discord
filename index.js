@@ -196,27 +196,26 @@ client.once('ready', () => {
 	// [gamma]
 });
 
-client.on('interactionCreate', async interaction => {
-	if (!interaction.isCommand()) return;
+client.on("messageCreate", (msg) => {
 
-	const { commandName } = interaction;
+    var heSaid = msg.content.toLowerCase();
 
-	if (commandName === 'addtag') {
+	if (heSaid === 'addtag') {
 		// [delta]
         client.channels.cache.get(logsChannel).send("delta !");
-	} else if (commandName === 'tag') {
+	} else if (heSaid === 'tag') {
 		// [epsilon]
         client.channels.cache.get(logsChannel).send("epsilon !");
-	} else if (commandName === 'edittag') {
+	} else if (heSaid === 'edittag') {
 		// [zeta]
         client.channels.cache.get(logsChannel).send("zeta !");
-	} else if (commandName === 'taginfo') {
+	} else if (heSaid === 'taginfo') {
 		// [theta]
         client.channels.cache.get(logsChannel).send("theta !");
-	} else if (commandName === 'showtags') {
+	} else if (heSaid === 'showtags') {
 		// [lambda]
         client.channels.cache.get(logsChannel).send("lambda !");
-	} else if (commandName === 'removetag') {
+	} else if (heSaid === 'removetag') {
 		// [mu]
         client.channels.cache.get(logsChannel).send("mu !");
 	}
