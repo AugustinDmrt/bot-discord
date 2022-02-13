@@ -2,7 +2,8 @@ const Discord = require("discord.js");
 const ytdl = require("ytdl-core");
 const { joinVoiceChannel } = require('@discordjs/voice');
 const { Client, Intents } = require("discord.js");
-const Sequelize = require('sequelize');
+const db= require("./database/database")
+
 const client = new Discord.Client({
     intents: [
         Intents.FLAGS.GUILDS,
@@ -23,49 +24,9 @@ client.on("ready", function() {
     console.log("Bot ON");
     client.channels.cache.get(logsChannel).send("Bot ON");
 
-    // Lecture du json --------------------------------------------
-    const fs = require('fs');
-    const path = require('path');
-
-    let rawdata = fs.readFileSync(path.resolve(__dirname, './database.json'));
-    let data = JSON.parse(rawdata);
-    // console.log(data[326660584848490496n].username);
-    // console.log(data[326660584848490496n].xp);
-    // console.log(data[326660584848490496n].level);
-    // console.log("-----------");
-    // console.log(data[249522071581753354n].username);
-    // console.log(data[249522071581753354n].xp);
-    // console.log(data[249522071581753354n].level);
-    // console.log("-----------");
-    // ------------------------------------------------------------
-
-    // Ecriture dans le Json --------------------------------------------
-    
-    // NE MARCHE PAS
-    
-    let userInfo = {
-        "12345": {
-            "username": "Test",
-            "xp": 45,
-            "level": 50
-        }
-    }
-
-    // let newData = JSON.stringify(userInfo);
-        
-	
-    const mergedObject = {
-    ...data,
-    ...userInfo
-    };
-
-    // console.log(mergedObject)
-
-    fs.writeFileSync(path.resolve(__dirname, './database.json'), mergedObject.toString()); // ecrit dans le fichier en string
-
-    // NE MARCHE PAS
-
-    // ------------------------------------------------------------
+    db.authenticate()
+        .then(() => console.log("Logged in to DB"))
+        .catch(err => console.log(err));
 
 });
 
@@ -189,9 +150,11 @@ const sequelize = new Sequelize('database', 'user', 'password', {
 	storage: 'database.sqlite',
 });
 
-client.on("messageCreate", (msg) => {
+client.on("messageCreate", async (msg) => {
 
     var heSaid = msg.content.toLowerCase();
+
+    const Pseudo = sequelize.define('pseudo');
 
 	if (heSaid === 'add') {
         try {
