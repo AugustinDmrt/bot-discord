@@ -189,35 +189,27 @@ const sequelize = new Sequelize('database', 'user', 'password', {
 	storage: 'database.sqlite',
 });
 
-
-// [beta]
-
-client.once('ready', () => {
-	// [gamma]
-});
-
 client.on("messageCreate", (msg) => {
 
     var heSaid = msg.content.toLowerCase();
 
-	if (heSaid === 'addtag') {
-		// [delta]
-        client.channels.cache.get(logsChannel).send("delta !");
-	} else if (heSaid === 'tag') {
-		// [epsilon]
-        client.channels.cache.get(logsChannel).send("epsilon !");
-	} else if (heSaid === 'edittag') {
-		// [zeta]
-        client.channels.cache.get(logsChannel).send("zeta !");
-	} else if (heSaid === 'taginfo') {
-		// [theta]
-        client.channels.cache.get(logsChannel).send("theta !");
-	} else if (heSaid === 'showtags') {
-		// [lambda]
-        client.channels.cache.get(logsChannel).send("lambda !");
-	} else if (heSaid === 'removetag') {
-		// [mu]
-        client.channels.cache.get(logsChannel).send("mu !");
+	if (heSaid === 'add') {
+        try {
+            // equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
+            const pseudo = await Pseudo.create({
+                pseudo: "Test",
+            });
+        
+            return client.channels.cache.get(logsChannel).send("Ajouté !");
+            
+        }
+        catch (error) {
+            if (error.name === 'SequelizeUniqueConstraintError') {
+                return client.channels.cache.get(logsChannel).send("That Name already exists !");
+            }
+        
+            return client.channels.cache.get(logsChannel).send("Something went wrong with adding a name.");
+        }
 	}
 });
 
