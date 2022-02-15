@@ -4,7 +4,7 @@ module.exports = class Users extends Model {
     static init(sequelize){
         return super.init({
             userid: {
-                type: DataTypes.INTEGER,
+                type: DataTypes.BIGINT,
                 primaryKey: true
             },
             username: { type: DataTypes.STRING },
