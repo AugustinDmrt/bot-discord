@@ -2,7 +2,9 @@ const Discord = require("discord.js");
 const ytdl = require("ytdl-core");
 const { joinVoiceChannel } = require('@discordjs/voice');
 const { Client, Intents } = require("discord.js");
+
 const db = require("./database/database")
+const Users = require('./models/Users')
 
 const client = new Discord.Client({
     intents: [
@@ -24,13 +26,13 @@ client.on("ready", function() {
     console.log("Bot ON");
     client.channels.cache.get(logsChannel).send("Bot ON");
 
-    // db.authenticate()
-    //     .then(() => console.log("Logged in to DB"))
-    //     .catch(err => console.log(err));
-
     try {
         db.authenticate();
         console.log('Connection has been established successfully.');
+
+        Users.init(db);
+        Users.sync();
+
     } catch (error) {
         console.error('Unable to connect to the database:', error);
     }
