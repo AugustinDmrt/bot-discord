@@ -43,7 +43,6 @@ client.on("ready", function() {
 
 client.on("messageCreate", (msg) => {
     // Anti raciste section ---------------------------------------------------------------------------
-    var sanction = false;
     var heSaid = msg.content.toLowerCase();
     heSaid = heSaid.split(" ");
     for (var j = 0; j < heSaid.length; j++) {
@@ -59,28 +58,15 @@ client.on("messageCreate", (msg) => {
                         heSaid[j] +
                         "**"
                     );
-                sanction = true;
+                // Ajouter le jeux
             }
         }
-    }
-    if (sanction == true) {
-        msg.reply("Vous avez été sanctionné sur le message !");
-        sanction = false;
     }
 
     // --------------------------------------------------------------------------------------------------
 });
 
 client.on("messageCreate", (msg) => {
-    // Tableau du racisme ---------------------------------------------------------------------------
-    var heSaid = msg.content.toLowerCase();
-    for (var i = 0; i < banWorld.length; i++) {
-        if (banWorld[i] === heSaid) {
-            RaccistArray.push(msg.member.user.id);
-        }
-    }
-    // --------------------------------------------------------------------------------------------------   
-
     // Si le message n'est pas préfixé ou qu'il vient d'un autre bot, nous l'ignorons
     if (!msg.content.startsWith(prefixCmd) || msg.author.bot) return;
 
@@ -122,15 +108,16 @@ client.on("messageCreate", (msg) => {
                     );
             });
             break;
-        case "debugme":
-            let userId = parseInt(msg.author.id)
+        case "rejoindre":
+            msg.member.roles.add("935240847639851019");
             Users.create({
-                userid: userId,
+                userid: parseInt(msg.author.id),
                 username: msg.author.username,
                 xp: 0,
                 level: 0
             });
-            client.channels.cache.get(logsChannel).send("Vous avez été ajouté à la base de données !");
+            msg.reply(msg.author.tag + ", vous avez rejoind le tableau des racistes !");
+            client.channels.cache.get(logsChannel).send(msg.author.tag + "a rejoind le tableau des racistes !");
         default:
             break;
     }
