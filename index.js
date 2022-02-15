@@ -127,10 +127,9 @@ client.on("messageCreate", (msg) => {
 async function userExist(msg){
     Users.count({ where: { userid: parseInt(msg.author.id) } })
         .then(count => {
-            console.log(count);
-            if (count == 0) {
+            if (parseInt(count) == 0) {
                 return false;
-            } else if (count == 1) {
+            } else if (parseInt(count) == 1) {
                 return true;
             }
         });
