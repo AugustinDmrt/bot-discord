@@ -44,6 +44,24 @@ async function getStats(msg){
     }
 }
 
+async function addXp(msg) {
+    if (await userExist(msg) == true) {
+        const currentXp = await Users.findOne({
+            attributes: ['xp'],
+            where: {
+                userid: parseInt(msg.author.id)
+            }
+        });
+
+        await Users.update(
+            {xp: currentXp.xp + 5},
+            {where: {
+                userid: parseInt(msg.author.id)
+            }}
+        )   
+    }
+}
+
 
 //Toutes les actions à faire quand le bot se connecte
 client.on("ready", function() {
@@ -63,8 +81,6 @@ client.on("ready", function() {
 
 });
 
-
-
 client.on("messageCreate", (msg) => {
     // Anti raciste section ---------------------------------------------------------------------------
     var heSaid = msg.content.toLowerCase();
@@ -73,11 +89,9 @@ client.on("messageCreate", (msg) => {
         for (var i = 0; i < banWorld.length; i++) {
             if (banWorld[i] === heSaid[j]) {
                 
-                // Select
+                addXp(msg);
+
                 
-
-
-                // Ajouter le jeux
             }
         }
     }
