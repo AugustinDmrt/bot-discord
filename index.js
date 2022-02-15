@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const ytdl = require("ytdl-core");
 const { joinVoiceChannel } = require('@discordjs/voice');
 const { Client, Intents } = require("discord.js");
-const db= require("./database/database")
+const db = require("./database/database")
 
 const client = new Discord.Client({
     intents: [
