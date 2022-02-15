@@ -73,12 +73,12 @@ async function addLvl(currentLvl, msg) {
 
   client.channels.cache
   .get(logsChannel)
-  .send(
+  .send("[Logs] : " +
     msg.author.tag +
       " a gagné 1 level !"
   );
 
-  msg.channel.send("@" + msg.author.tag + ", Vous avez gagné 1 level | Tapez **d!stats** pour en savoir plus...")
+  msg.channel.send("<@" + msg.author.id + ">, Vous avez gagné 1 level | Tapez **d!stats** pour en savoir plus...")
 
 }
 
@@ -126,7 +126,7 @@ async function addXp(msg) {
       );
       client.channels.cache
         .get(logsChannel)
-        .send(
+        .send("[Logs] : " +
           msg.author.tag +
             " a reçu 5 d'xp pour avoir dit : **" +
             msg.content +
@@ -138,9 +138,6 @@ async function addXp(msg) {
 
 //Toutes les actions à faire quand le bot se connecte
 client.on("ready", function () {
-  console.log("Bot ON");
-  client.channels.cache.get(logsChannel).send("Bot ON");
-
   try {
     db.authenticate();
     console.log("Connection has been established successfully.");
@@ -150,6 +147,9 @@ client.on("ready", function () {
   } catch (error) {
     console.error("Unable to connect to the database:", error);
   }
+
+  console.log("Bot ON");
+  client.channels.cache.get(logsChannel).send("Bot ON");
 });
 
 client.on("messageCreate", (msg) => {
@@ -191,7 +191,7 @@ client.on("messageCreate", (msg) => {
       }
       break;
     case "test":
-      client.channels.cache.get(logsChannel).send("OK !");
+      client.channels.cache.get(logsChannel).send("[Logs] : OK !");
       break;
 
     case "invite":
@@ -205,7 +205,7 @@ client.on("messageCreate", (msg) => {
         client.channels.cache
           .get(logsChannel)
           .send(
-            "L'utilisateur **" + msg.author.tag + "** a crée une invitation"
+            "[Logs] : L'utilisateur **" + msg.author.tag + "** a crée une invitation"
           );
       });
       break;
@@ -223,7 +223,7 @@ client.on("messageCreate", (msg) => {
       );
       client.channels.cache
         .get(logsChannel)
-        .send(msg.author.tag + " a rejoind le tableau des racistes !");
+        .send("[Logs] : " + msg.author.tag + " a rejoind le tableau des racistes !");
       break;
     case "stats":
       getStats(msg);
@@ -239,7 +239,7 @@ client.on("guildMemberAdd", (member) => {
   member.roles.add("417415677348020224");
   client.channels.cache
     .get(logsChannel)
-    .send("**" + member.user.username + "** a rejoind le serveur");
+    .send("[Logs] : **" + member.user.username + "** a rejoind le serveur");
 });
 // ----------------------------------------------------------------------------------------------------------
 
@@ -247,7 +247,7 @@ client.on("guildMemberAdd", (member) => {
 client.on("guildMemberRemove", (member) => {
   client.channels.cache
     .get(logsChannel)
-    .send("**" + member.user.username + "** a quitté le serveur...");
+    .send("[Logs] : **" + member.user.username + "** a quitté le serveur...");
 });
 // ----------------------------------------------------------------------------------------------------------
 
