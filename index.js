@@ -114,18 +114,24 @@ client.on("messageCreate", (msg) => {
             msg.reply(msg.author.tag + ", vous avez rejoind le tableau des racistes !");
             client.channels.cache.get(logsChannel).send(msg.author.tag + "a rejoind le tableau des racistes !");
         case "stats":
-            const stats = await Users.findOne({
-                attributes: ['xp', 'level'],
-                where: { userid: parseInt(msg.author.id) }
-            });
-            
-            if (Users){
-                msg.channel.send(msg.author.username + " vos stats sont : lv : " + stats.xp + "- xp : " + stats.level)
-            }
+            getStats()
         default:
             break;
     }
 });
+
+async function getStats(){
+    const stats = await Users.findOne({
+        attributes: ['xp', 'level'],
+        where: { userid: parseInt(msg.author.id) }
+    });
+    
+    if (Users){
+        return msg.channel.send(msg.author.username + " vos stats sont : lv : " + stats.xp + "- xp : " + stats.level)
+    } else{
+        return msg.channel.send("Vous n'êtes pas dans la liste des racistes, si vous voulez rejoindre faite : **d!rejoindre**")
+    }
+}
 
 // Envoie un message dans les logs du bot si un joueur rejoind le serveur -----------------------------------
 client.on("guildMemberAdd", (member) => {
