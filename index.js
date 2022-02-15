@@ -211,7 +211,7 @@ client.on("messageCreate", (msg) => {
       break;
 
     case "rejoindre":
-      msg.member.roles.add("935240847639851019");
+      msg.member.roles.add("943246991352295455");
       Users.create({
         userid: parseInt(msg.author.id),
         username: msg.author.username,
