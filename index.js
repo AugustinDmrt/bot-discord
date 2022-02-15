@@ -24,11 +24,20 @@ client.on("ready", function() {
     console.log("Bot ON");
     client.channels.cache.get(logsChannel).send("Bot ON");
 
-    db.authenticate()
-        .then(() => console.log("Logged in to DB"))
-        .catch(err => console.log(err));
+    // db.authenticate()
+    //     .then(() => console.log("Logged in to DB"))
+    //     .catch(err => console.log(err));
+
+    try {
+        await db.authenticate();
+        console.log('Connection has been established successfully.');
+    } catch (error) {
+        console.error('Unable to connect to the database:', error);
+    }
 
 });
+
+
 
 client.on("messageCreate", (msg) => {
     // Anti raciste section ---------------------------------------------------------------------------
@@ -133,56 +142,5 @@ client.on("guildMemberRemove", (member) => {
         .send("**" + member.user.username + "** a quitté le serveur...");
 });
 // ----------------------------------------------------------------------------------------------------------
-
-
-
-
-
-////////////////// TEST DATABASE ///////////////////////////////////////////////////////////////////////////
-
-
-// [alpha]
-const sequelize = new Sequelize('database', 'user', 'password', {
-	host: 'mysql://portfolioaugustin.zd.fr',
-	dialect: 'sqlite',
-	logging: false,
-	// SQLite only
-	storage: 'database.sqlite',
-});
-
-client.on("messageCreate", async (msg) => {
-
-    var heSaid = msg.content.toLowerCase();
-
-    const Pseudo = sequelize.define('pseudo');
-
-	if (heSaid === 'add') {
-        try {
-            // equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
-            const pseudo = await Pseudo.create({
-                pseudo: "Test",
-            });
-        
-            return client.channels.cache.get(logsChannel).send("Ajouté !");
-            
-        }
-        catch (error) {
-            if (error.name === 'SequelizeUniqueConstraintError') {
-                return client.channels.cache.get(logsChannel).send("That Name already exists !");
-            }
-        
-            return client.channels.cache.get(logsChannel).send("Something went wrong with adding a name.");
-        }
-	}
-});
-
-
-// ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
 
 client.login(process.env.BOT_TOKEN);
