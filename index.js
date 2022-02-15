@@ -114,14 +114,14 @@ client.on("messageCreate", (msg) => {
             msg.reply(msg.author.tag + ", vous avez rejoind le tableau des racistes !");
             client.channels.cache.get(logsChannel).send(msg.author.tag + "a rejoind le tableau des racistes !");
         case "stats":
-            let stats = Users.findAll({
+            const stats = await Users.findOne({
                 attributes: ['xp', 'level'],
-                where: {
-                    userid: parseInt(msg.author.id)
-                }
-            }).then(
+                where: { userid: parseInt(msg.author.id) }
+            });
+            
+            if (Users){
                 msg.channel.send(msg.author.username + " vos stats sont : lv : " + stats.xp + "- xp : " + stats.level)
-            );
+            }
         default:
             break;
     }
