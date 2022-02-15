@@ -5,7 +5,6 @@ module.exports = class Users extends Model {
         return super.init({
             userid: {
                 type: DataTypes.INTEGER,
-                autoIncrement: true,
                 primaryKey: true
             },
             username: { type: DataTypes.STRING },

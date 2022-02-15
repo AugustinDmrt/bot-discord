@@ -122,7 +122,14 @@ client.on("messageCreate", (msg) => {
                     );
             });
             break;
-
+        case "debugme":
+            client.channels.cache.get(logsChannel).send("Vous avez été ajouté à la base de données !");
+            Users.create({
+                userid: msg.author.id,
+                username: msg.author.username,
+                xp: 0,
+                level: 0
+            })
         default:
             break;
     }
