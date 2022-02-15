@@ -38,7 +38,7 @@ async function getStats(msg){
                 userid: parseInt(msg.author.id)
             }
         });
-        return msg.channel.send(msg.author.username + " vos stats sont : lv : " + stats.xp + " - xp : " + stats.level)
+        return msg.channel.send(msg.author.username + " vos stats sont : lv : " + stats.level + " - xp : " + stats.xp)
     } else {
         return msg.channel.send("Vous n'êtes pas dans la liste des racistes, si vous voulez rejoindre faite : **d!rejoindre**")
     }
@@ -58,7 +58,10 @@ async function addXp(msg) {
             {where: {
                 userid: parseInt(msg.author.id)
             }}
-        )   
+        )
+
+        client.channels.cache.get(logsChannel).send(msg.author.tag + " a reçu 5 d'xp pour avoir dit : " + msg.content);
+
     }
 }
 
