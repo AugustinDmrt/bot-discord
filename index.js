@@ -78,7 +78,7 @@ async function addLvl(currentLvl, msg) {
       " a gagné 1 level !"
   );
 
-  msg.channel.send("@" + msg.author.username + ", Vous avez gagné 1 level | Tapez **d!stats** pour en savoir plus...")
+  msg.channel.send("@" + msg.author.tag + ", Vous avez gagné 1 level | Tapez **d!stats** pour en savoir plus...")
 
 }
 
