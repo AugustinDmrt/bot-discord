@@ -114,13 +114,13 @@ client.on("messageCreate", (msg) => {
             msg.reply(msg.author.tag + ", vous avez rejoind le tableau des racistes !");
             client.channels.cache.get(logsChannel).send(msg.author.tag + "a rejoind le tableau des racistes !");
         case "stats":
-            getStats()
+            getStats(msg)
         default:
             break;
     }
 });
 
-async function getStats(){
+async function getStats(msg){
     const stats = await Users.findAll({
         attributes: ['xp', 'level'],
         where: {
