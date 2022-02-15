@@ -48,16 +48,11 @@ client.on("messageCreate", (msg) => {
     for (var j = 0; j < heSaid.length; j++) {
         for (var i = 0; i < banWorld.length; i++) {
             if (banWorld[i] === heSaid[j]) {
-                msg.member.roles.add("935240847639851019");
-                client.channels.cache
-                    .get(logsChannel)
-                    .send(
-                        "Le rôle de raciste a été attribué à **" +
-                        msg.member.user.username +
-                        "** pour avoir dit le mot **" +
-                        heSaid[j] +
-                        "**"
-                    );
+                
+                // Select
+                
+
+
                 // Ajouter le jeux
             }
         }
@@ -118,6 +113,14 @@ client.on("messageCreate", (msg) => {
             });
             msg.reply(msg.author.tag + ", vous avez rejoind le tableau des racistes !");
             client.channels.cache.get(logsChannel).send(msg.author.tag + "a rejoind le tableau des racistes !");
+        case "stats":
+            let stats = Users.findAll({
+                attributes: ['xp', 'level'],
+                where: {
+                    userid: parseInt(msg.author.id)
+                }
+            });
+            msg.channel.send(msg.author.username + " vos stats sont : lv : " + stats.xp + ",xp : " + stats.level)
         default:
             break;
     }
