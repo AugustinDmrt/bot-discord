@@ -118,23 +118,32 @@ client.on("messageCreate", (msg) => {
         case "stats":
             getStats(msg);
             break;
-            
+
         default:
             break;
     }
 });
 
+async function userExist(msg){
+    Users.count({ where: { userid: parseInt(msg.author.id) } })
+        .then(count => {
+            if (count != 0) {
+                return false;
+            }
+                return true;
+        });
+}
+
 async function getStats(msg){
-    const stats = await Users.findOne({
-        attributes: ['xp', 'level'],
-        where: {
-            userid: parseInt(msg.author.id)
-        }
-    });
-    
-    if (Users){
-        return msg.channel.send(msg.author.username + " vos stats sont : lv : " + stats.xp + "- xp : " + stats.level)
-    } else{
+    if (userExist(msg)) {
+        const stats = await Users.findOne({
+            attributes: ['xp', 'level'],
+            where: {
+                userid: parseInt(msg.author.id)
+            }
+        });
+        return msg.channel.send(msg.author.username + " vos stats sont : lv : " + stats.xp + " - xp : " + stats.level)
+    }else{
         return msg.channel.send("Vous n'êtes pas dans la liste des racistes, si vous voulez rejoindre faite : **d!rejoindre**")
     }
 }
