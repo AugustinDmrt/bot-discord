@@ -129,8 +129,9 @@ async function userExist(msg){
         .then(count => {
             if (count != 0) {
                 return true;
-            }
+            } else {
                 return false;
+            }
         });
 }
 
