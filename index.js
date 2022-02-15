@@ -103,18 +103,25 @@ async function addXp(msg) {
 
     if (newXp == 10 && lvl == 0) {
       addLvl(lvl, msg);
+      msg.member.roles.add("943242312312582225");
     } else if (newXp == 25 && lvl == 1) {
       addLvl(lvl, msg);
+      msg.member.roles.add("943243068130328637");
     } else if (newXp == 50 && lvl == 2) {
       addLvl(lvl, msg);
+      msg.member.roles.add("943242563807223919");
     } else if (newXp == 100 && lvl == 3) {
       addLvl(lvl, msg);
+      msg.member.roles.add("943244095999070228");
     } else if (newXp == 250 && lvl == 4) {
       addLvl(lvl, msg);
+      msg.member.roles.add("943245557554618368");
     } else if (newXp == 500 && lvl == 5) {
       addLvl(lvl, msg);
+      msg.member.roles.add("943244351272783912");
     } else if (newXp == 1000 && lvl == 6) {
       addLvl(lvl, msg);
+      msg.member.roles.add("943242760956289025");
     } else {
       await Users.update(
         { xp: currentXp.xp + 5 },
