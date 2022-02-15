@@ -21,6 +21,31 @@ var logsChannel = "937026983265726495"; // Identifiant du channel des logs du bo
 var banWorld = ["noir", "nigger", "negger", "negro", "marie"]; // Mot à ne pas dire
 let RaccistArray = new Array;
 
+async function userExist(msg){
+    Users.count({ where: { userid: parseInt(msg.author.id) } }).then(c => {
+        if (c != 0) {
+            return true;
+        } else {
+            return false;
+        }
+    })
+}
+
+function getStats(msg){
+    if (await userExist(msg) == true) {
+        const stats = await Users.findOne({
+            attributes: ['xp', 'level'],
+            where: {
+                userid: parseInt(msg.author.id)
+            }
+        });
+        return msg.channel.send(msg.author.username + " vos stats sont : lv : " + stats.xp + " - xp : " + stats.level)
+    } else {
+        return msg.channel.send("Vous n'êtes pas dans la liste des racistes, si vous voulez rejoindre faite : **d!rejoindre**")
+    }
+}
+
+
 //Toutes les actions à faire quand le bot se connecte
 client.on("ready", function() {
     console.log("Bot ON");
@@ -123,32 +148,6 @@ client.on("messageCreate", (msg) => {
             break;
     }
 });
-
-async function userExist(msg){
-    Users.count({ where: { userid: parseInt(msg.author.id) } })
-        .then(count => {
-            if (parseInt(count) == 0) {
-                return false;
-            } else if (parseInt(count) == 1) {
-                return true;
-            }
-        });
-}
-
-async function getStats(msg){
-    const boolean = await userExist(msg);
-    if (boolean) {
-        const stats = await Users.findOne({
-            attributes: ['xp', 'level'],
-            where: {
-                userid: parseInt(msg.author.id)
-            }
-        });
-        return msg.channel.send(msg.author.username + " vos stats sont : lv : " + stats.xp + " - xp : " + stats.level)
-    }else{
-        return msg.channel.send("Vous n'êtes pas dans la liste des racistes, si vous voulez rejoindre faite : **d!rejoindre**")
-    }
-}
 
 // Envoie un message dans les logs du bot si un joueur rejoind le serveur -----------------------------------
 client.on("guildMemberAdd", (member) => {
