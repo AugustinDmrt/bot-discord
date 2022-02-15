@@ -103,6 +103,7 @@ client.on("messageCreate", (msg) => {
                     );
             });
             break;
+
         case "rejoindre":
             msg.member.roles.add("935240847639851019");
             Users.create({
@@ -113,15 +114,18 @@ client.on("messageCreate", (msg) => {
             });
             msg.reply(msg.author.tag + ", vous avez rejoind le tableau des racistes !");
             client.channels.cache.get(logsChannel).send(msg.author.tag + "a rejoind le tableau des racistes !");
+            break;
         case "stats":
-            getStats(msg)
+            getStats(msg);
+            break;
+            
         default:
             break;
     }
 });
 
 async function getStats(msg){
-    const stats = await Users.findAll({
+    const stats = await Users.findOne({
         attributes: ['xp', 'level'],
         where: {
             userid: parseInt(msg.author.id)
