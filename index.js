@@ -123,7 +123,9 @@ client.on("messageCreate", (msg) => {
 async function getStats(){
     const stats = await Users.findAll({
         attributes: ['xp', 'level'],
-        where: { userid: parseInt(msg.author.id) }
+        where: {
+            userid: parseInt(msg.author.id)
+        }
     });
     
     if (Users){
