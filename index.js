@@ -129,7 +129,7 @@ async function userExist(msg){
         .then(count => {
             if (count == 0) {
                 return false;
-            } else if (count != 0) {
+            } else if (count == 1) {
                 return true;
             }
         });
