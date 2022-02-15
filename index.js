@@ -127,10 +127,10 @@ client.on("messageCreate", (msg) => {
 async function userExist(msg){
     Users.count({ where: { userid: parseInt(msg.author.id) } })
         .then(count => {
-            if (count != 0) {
-                return true;
-            } else {
+            if (count == 0) {
                 return false;
+            } else if (count != 0) {
+                return true;
             }
         });
 }
@@ -138,7 +138,7 @@ async function userExist(msg){
 async function getStats(msg){
     const boolean = await userExist(msg);
     console.log(boolean);
-    if (boolean) {
+    if (boolean == true) {
         const stats = await Users.findOne({
             attributes: ['xp', 'level'],
             where: {
