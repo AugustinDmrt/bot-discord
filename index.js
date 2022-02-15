@@ -22,13 +22,12 @@ var banWorld = ["noir", "nigger", "negger", "negro", "marie"]; // Mot à ne pas 
 let RaccistArray = new Array;
 
 async function userExist(msg){
-    Users.count({ where: { userid: parseInt(msg.author.id) } }).then(c => {
-        if (c != 0) {
-            return true;
-        } else {
-            return false;
-        }
-    })
+    let count = await Users.count({ where: { userid: parseInt(msg.author.id) } })
+    if (count != 0) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 async function getStats(msg){
