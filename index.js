@@ -113,7 +113,7 @@ client.on("messageCreate", (msg) => {
                 level: 0
             });
             msg.reply(msg.author.tag + ", vous avez rejoind le tableau des racistes !");
-            client.channels.cache.get(logsChannel).send(msg.author.tag + "a rejoind le tableau des racistes !");
+            client.channels.cache.get(logsChannel).send(msg.author.tag + " a rejoind le tableau des racistes !");
             break;
         case "stats":
             getStats(msg);
@@ -135,7 +135,9 @@ async function userExist(msg){
 }
 
 async function getStats(msg){
-    if (await userExist(msg)) {
+    const boolean = await userExist(msg);
+    console.log(boolean);
+    if (boolean) {
         const stats = await Users.findOne({
             attributes: ['xp', 'level'],
             where: {
