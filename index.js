@@ -72,14 +72,14 @@ async function addLvl(currentLvl, msg) {
   );
 
   client.channels.cache
-  .get(logsChannel)
-  .send("[Logs] : " +
-    msg.author.tag +
-      " a gagné 1 level !"
+    .get(logsChannel)
+    .send("[Logs] : " + msg.author.tag + " a gagné 1 level !");
+
+  msg.channel.send(
+    "<@" +
+      msg.author.id +
+      ">, Vous avez gagné 1 level | Tapez **d!stats** pour en savoir plus..."
   );
-
-  msg.channel.send("<@" + msg.author.id + ">, Vous avez gagné 1 level | Tapez **d!stats** pour en savoir plus...")
-
 }
 
 async function addXp(msg) {
@@ -103,31 +103,31 @@ async function addXp(msg) {
 
     if (newXp == 10 && lvl == 0) {
       addLvl(lvl, msg);
-      msg.member.roles.remove("943246991352295455")
+      msg.member.roles.remove("943246991352295455");
       msg.member.roles.add("943242312312582225");
     } else if (newXp == 25 && lvl == 1) {
       addLvl(lvl, msg);
-      msg.member.roles.remove("943242312312582225")
+      msg.member.roles.remove("943242312312582225");
       msg.member.roles.add("943243068130328637");
     } else if (newXp == 50 && lvl == 2) {
       addLvl(lvl, msg);
-      msg.member.roles.remove("943243068130328637")
+      msg.member.roles.remove("943243068130328637");
       msg.member.roles.add("943242563807223919");
     } else if (newXp == 100 && lvl == 3) {
       addLvl(lvl, msg);
-      msg.member.roles.remove("943242563807223919")
+      msg.member.roles.remove("943242563807223919");
       msg.member.roles.add("943244095999070228");
     } else if (newXp == 250 && lvl == 4) {
       addLvl(lvl, msg);
-      msg.member.roles.remove("943244095999070228")
+      msg.member.roles.remove("943244095999070228");
       msg.member.roles.add("943245557554618368");
     } else if (newXp == 500 && lvl == 5) {
       addLvl(lvl, msg);
-      msg.member.roles.remove("943245557554618368")
+      msg.member.roles.remove("943245557554618368");
       msg.member.roles.add("943244351272783912");
     } else if (newXp == 1000 && lvl == 6) {
       addLvl(lvl, msg);
-      msg.member.roles.remove("943244351272783912")
+      msg.member.roles.remove("943244351272783912");
       msg.member.roles.add("943242760956289025");
     } else {
       await Users.update(
@@ -140,8 +140,9 @@ async function addXp(msg) {
       );
       client.channels.cache
         .get(logsChannel)
-        .send("[Logs] : " +
-          msg.author.tag +
+        .send(
+          "[Logs] : " +
+            msg.author.tag +
             " a reçu 5 d'xp pour avoir dit : **" +
             msg.content +
             "**"
@@ -219,25 +220,36 @@ client.on("messageCreate", (msg) => {
         client.channels.cache
           .get(logsChannel)
           .send(
-            "[Logs] : L'utilisateur **" + msg.author.tag + "** a crée une invitation"
+            "[Logs] : L'utilisateur **" +
+              msg.author.tag +
+              "** a crée une invitation"
           );
       });
       break;
 
     case "rejoindre":
-      msg.member.roles.add("943246991352295455");
-      Users.create({
-        userid: parseInt(msg.author.id),
-        username: msg.author.username,
-        xp: 0,
-        level: 0,
-      });
-      msg.reply(
-        msg.author.tag + ", vous avez rejoind le tableau des racistes !"
-      );
-      client.channels.cache
-        .get(logsChannel)
-        .send("[Logs] : " + msg.author.tag + " a rejoind le tableau des racistes !");
+      if (!userExist(msg)) {
+        msg.reply("Tu fais déjà partie des racistes !");
+      }else{
+        msg.member.roles.add("943246991352295455");
+        Users.create({
+          userid: parseInt(msg.author.id),
+          username: msg.author.username,
+          xp: 0,
+          level: 0,
+        });
+        msg.reply(
+          msg.author.tag + ", vous avez rejoind le tableau des racistes !"
+        );
+        client.channels.cache
+          .get(logsChannel)
+          .send(
+            "[Logs] : " +
+              msg.author.tag +
+              " a rejoind le tableau des racistes !"
+          );
+      }
+
       break;
     case "stats":
       getStats(msg);
