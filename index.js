@@ -128,9 +128,9 @@ async function userExist(msg){
     Users.count({ where: { userid: parseInt(msg.author.id) } })
         .then(count => {
             if (count != 0) {
-                return false;
-            }
                 return true;
+            }
+                return false;
         });
 }
 
