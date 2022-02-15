@@ -137,8 +137,7 @@ async function userExist(msg){
 
 async function getStats(msg){
     const boolean = await userExist(msg);
-    console.log(boolean);
-    if (boolean == true) {
+    if (boolean) {
         const stats = await Users.findOne({
             attributes: ['xp', 'level'],
             where: {
