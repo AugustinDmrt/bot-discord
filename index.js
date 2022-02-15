@@ -123,13 +123,14 @@ client.on("messageCreate", (msg) => {
             });
             break;
         case "debugme":
-            client.channels.cache.get(logsChannel).send("Vous avez été ajouté à la base de données !");
+            let userId = parseInt(msg.author.id)
             Users.create({
-                userid: msg.author.id,
+                userid: userId,
                 username: msg.author.username,
                 xp: 0,
                 level: 0
-            })
+            });
+            client.channels.cache.get(logsChannel).send("Vous avez été ajouté à la base de données !");
         default:
             break;
     }
