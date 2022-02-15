@@ -120,7 +120,7 @@ client.on("messageCreate", (msg) => {
                     userid: parseInt(msg.author.id)
                 }
             }).then(
-                msg.channel.send(msg.author.username + " vos stats sont : lv : " + stats.xp.toString() + "- xp : " + stats.level.toString())
+                msg.channel.send(msg.author.username + " vos stats sont : lv : " + stats.xp + "- xp : " + stats.level)
             );
         default:
             break;
