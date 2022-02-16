@@ -290,11 +290,11 @@ client.on("messageCreate", (msg) => {
 });
 
 async function join(msg) {
-  if (message.member.voice.channel) {
-    const connection = await message.member.voice.channel.join();
+  if (msg.member.voice.channel) {
+    const connection = await msg.member.voice.channel.join();
 
     // Créer un dispatcher
-    const dispatcher = connection.play("audio.mp3");
+    const dispatcher = connection.play("./assets/ho yeah.mp3");
 
     dispatcher.on("start", () => {
       console.log("audio.mp3 a commencé !");
