@@ -279,6 +279,18 @@ client.on("messageCreate", (msg) => {
     case "ranks":
       getRank(msg);
       break;
+    
+    case "join":
+      const connection = joinVoiceChannel({
+        channelId: msg.channel.id,
+        guildId: msg.channel.guild.id,
+        adapterCreator: msg.channel.guild.voiceAdapterCreator,
+      });
+      break;
+    
+    case "leave":
+      connection.destroy();
+      break;
 
     default:
       break;
