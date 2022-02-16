@@ -154,17 +154,16 @@ async function addXp(msg) {
 async function getRank(msg) {
   const rank = await Users.findAll({
     attributes: ["username", "level"],
-    order: [
-      ["level", "DESC"],
-    ],
+    order: [["level", "DESC"]],
     limit: 3,
   });
 
   let rankListe = "---------- Top 3 des racistes ---------- \n ";
-  rank.map( r => {
-    rankListe += "**"+ r.username + "** avec un niveau de : **" + r.level + "** \n ";
+  rank.map((r) => {
+    rankListe +=
+      "**" + r.username + "** avec un niveau de : **" + r.level + "** \n ";
   });
-  
+
   msg.channel.send(rankListe);
 }
 
@@ -226,7 +225,7 @@ client.on("messageCreate", (msg) => {
       help += "__d!invite__ : Pour créer une invitation de 24H \n";
       msg.channel.send(help);
       break;
-      
+
     case "test":
       client.channels.cache.get(logsChannel).send("[Logs] : OK !");
       break;
@@ -279,6 +278,28 @@ client.on("messageCreate", (msg) => {
 
     case "ranks":
       getRank(msg);
+      break;
+
+    case "join":
+      if (msg.member.voice.channel) {
+        const connection = await msg.member.voice.channel.join();
+
+        // Créer un dispatcher
+        const dispatcher = connection.play("./asset/ho yeah.mp3");
+
+        dispatcher.on("start", () => {
+          console.log("audio.mp3 a commencé !");
+        });
+
+        dispatcher.on("finish", () => {
+          console.log("audio.mp3 s'est terminé !");
+        });
+
+        // Gestion d'erreurs !
+        dispatcher.on("error", console.error);
+
+        dispatcher.destroy();
+      }
       break;
 
     default:
