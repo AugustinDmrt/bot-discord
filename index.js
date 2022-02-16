@@ -182,7 +182,8 @@ client.on("ready", function () {
     console.error("Unable to connect to the database:", error);
   }
 
-  let channel = client.channels.get('568439232780042282');
+  let channel = client.channels.resolveId('568439232780042282');
+  
 
   channel.join()
   .then(connection => console.log('Connected'))
