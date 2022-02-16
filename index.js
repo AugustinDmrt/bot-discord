@@ -280,36 +280,10 @@ client.on("messageCreate", (msg) => {
       getRank(msg);
       break;
 
-    case "join":
-      join(msg);
-      break;
-
     default:
       break;
   }
 });
-
-async function join(msg) {
-  if (msg.member.voice.channel) {
-    const connection = await msg.member.voice.channel.join();
-
-    // Créer un dispatcher
-    const dispatcher = connection.play("./assets/ho yeah.mp3");
-
-    dispatcher.on("start", () => {
-      console.log("audio.mp3 a commencé !");
-    });
-
-    dispatcher.on("finish", () => {
-      console.log("audio.mp3 s'est terminé !");
-    });
-
-    // Gestion d'erreurs !
-    dispatcher.on("error", console.error);
-
-    dispatcher.destroy();
-  }
-}
 
 // Envoie un message dans les logs du bot si un joueur rejoind le serveur -----------------------------------
 client.on("guildMemberAdd", (member) => {
