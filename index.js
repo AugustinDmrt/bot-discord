@@ -216,14 +216,14 @@ client.on("messageCreate", (msg) => {
 
   switch (command) {
     case "help":
-      let help = "----- Voici la liste des commandes : ----- \n "
-      help += "__**Section racistes :**__"
-      help += "**d!rejoindre** : Pour rejoindre les racistes \n "
-      help += "**d!stats** : Pour voir t'es stats de racistes \n "
-      help += "**d!ranks** : Pour voir les Master raciste de ce discord \n \n"
+      let help = "----- Voici la liste des commandes : ----- \n ";
+      help += "__**Section racistes :**__";
+      help += "**d!rejoindre** : Pour rejoindre les racistes \n ";
+      help += "**d!stats** : Pour voir t'es stats de racistes \n ";
+      help += "**d!ranks** : Pour voir les Master raciste de ce discord \n \n";
 
-      help += "__**Section Autres :**__"      
-      help += "**d!invite** : Pour créer une invitation de 24H"
+      help += "__**Section Autres :**__";
+      help += "**d!invite** : Pour créer une invitation de 24H";
       msg.channel.send(help);
       break;
       
