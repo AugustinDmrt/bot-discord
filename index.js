@@ -160,10 +160,10 @@ async function getRank(msg) {
     limit: 3,
   });
 
-  msg.channel.send("Top 3 des racistes :");
+  msg.channel.send("---------- Top 3 des racistes ----------");
 
   rank.map( r => {
-    msg.channel.send(r.username + " avec un niveau de : " + r.level)
+    msg.channel.send("**"+ r.username + "** avec un niveau de : **" + r.level + "**")
   });
 }
 
