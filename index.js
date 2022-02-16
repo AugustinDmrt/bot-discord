@@ -154,9 +154,6 @@ async function addXp(msg) {
 async function getRank(msg) {
   const rank = await Users.findAll({
     attributes: ["username", "level"],
-    where: {
-      userid: parseInt(msg.author.id),
-    },
     order: [
       ["level", "DESC"],
     ],
@@ -166,7 +163,7 @@ async function getRank(msg) {
   msg.channel.send("Top 3 des racistes :");
 
   rank.map( r => {
-    msg.channel.send(r.username + "avec un niveau de : " + r.level)
+    msg.channel.send(r.username + " avec un niveau de : " + r.level)
   });
 }
 
