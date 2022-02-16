@@ -154,7 +154,7 @@ async function addXp(msg) {
 async function getRank(msg) {
   const rank = await Users.findAll({
     attributes: ["username", "level"],
-    order: [["level", "DESC"]],
+    order: [["level", "DESC"], ["xp", "DESC"]],
     limit: 3,
   });
 
