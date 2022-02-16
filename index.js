@@ -151,6 +151,25 @@ async function addXp(msg) {
   }
 }
 
+async function getRank(msg) {
+  const rank = await Users.findAll({
+    attributes: ["username", "level"],
+    where: {
+      userid: parseInt(msg.author.id),
+    },
+    order: [
+      ["level", "DESC"],
+    ],
+    limit: 3,
+  });
+
+  msg.channel.send("Top 3 des racistes :");
+
+  rank.map( r => {
+    msg.channel.send(r.username + "avec un niveau de : " + r.level)
+  });
+}
+
 //Toutes les actions à faire quand le bot se connecte
 client.on("ready", function () {
   try {
@@ -230,7 +249,7 @@ client.on("messageCreate", (msg) => {
     case "rejoindre":
       if (userExist(msg)) {
         msg.reply("Tu fais déjà partie des racistes !");
-      }else{
+      } else {
         msg.member.roles.add("943246991352295455");
         Users.create({
           userid: parseInt(msg.author.id),
@@ -253,6 +272,9 @@ client.on("messageCreate", (msg) => {
       break;
     case "stats":
       getStats(msg);
+      break;
+    case "stats":
+      getRank(msg);
       break;
 
     default:
