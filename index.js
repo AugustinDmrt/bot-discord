@@ -19,7 +19,7 @@ require("dotenv").config();
 const prefixCmd = "d!";
 var logsChannel = "937026983265726495"; // Identifiant du channel des logs du bot
 var banWorld = ["noir", "nigger", "negger", "negro", "marie"]; // Mot à ne pas dire
-const connection;
+const connection = null;
 
 async function userExist(msg) {
   let count = await Users.count({ where: { userid: parseInt(msg.author.id) } });
