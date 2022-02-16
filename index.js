@@ -73,12 +73,12 @@ async function addLvl(currentLvl, msg) {
 
   client.channels.cache
     .get(logsChannel)
-    .send("[Logs] : " + msg.author.tag + " a gagné 1 level !");
+    .send("[Logs] : " + msg.author.tag + " a gagné **1** level !");
 
   msg.channel.send(
     "<@" +
       msg.author.id +
-      ">, Vous avez gagné 1 level | Tapez **d!stats** pour en savoir plus..."
+      ">, Vous avez gagné **1** level | Tapez **d!stats** pour en savoir plus..."
   );
 }
 
@@ -143,7 +143,7 @@ async function addXp(msg) {
         .send(
           "[Logs] : " +
             msg.author.tag +
-            " a reçu 5 d'xp pour avoir dit : **" +
+            " a reçu **5** d'xp pour avoir dit : **" +
             msg.content +
             "**"
         );
@@ -214,13 +214,10 @@ client.on("messageCreate", (msg) => {
   // On se sert maintenant de la varibale 'command' pour le test
 
   switch (command) {
-    case "racist":
-      if (RaccistArray.length == 0) {
-        msg.channel.send("Aucun raciste détecté à ce jour");
-      } else {
-        msg.channel.send(RaccistArray.toString());
-      }
+    case "help":
+      msg.channel.send("Voici la liste des commandes : \n **d!rejoindre** : Pour rejoindre les racistes \n **d!stats** : Pour voir t'es stats de racistes \n **d!ranks** : Pour voir les Master raciste de ce discord \n \n **d!invite** : Pour créer une invitation de 24H");
       break;
+      
     case "test":
       client.channels.cache.get(logsChannel).send("[Logs] : OK !");
       break;
@@ -265,11 +262,12 @@ client.on("messageCreate", (msg) => {
               " a rejoind le tableau des racistes !"
           );
       }
-
       break;
+
     case "stats":
       getStats(msg);
       break;
+
     case "ranks":
       getRank(msg);
       break;
