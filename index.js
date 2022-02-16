@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const ytdl = require("ytdl-core");
-const { joinVoiceChannel } = require("@discordjs/voice");
+const { joinVoiceChannel, entersState } = require("@discordjs/voice");
 const { Client, Intents } = require("discord.js");
 
 const db = require("./database/database");
@@ -19,7 +19,12 @@ require("dotenv").config();
 const prefixCmd = "d!";
 var logsChannel = "937026983265726495"; // Identifiant du channel des logs du bot
 var banWorld = ["noir", "nigger", "negger", "negro", "marie"]; // Mot à ne pas dire
-let RaccistArray = new Array();
+
+const connection = joinVoiceChannel({
+  channelId: msg.channel.id,
+  guildId: msg.channel.guild.id,
+  adapterCreator: msg.channel.guild.voiceAdapterCreator,
+});
 
 async function userExist(msg) {
   let count = await Users.count({ where: { userid: parseInt(msg.author.id) } });
@@ -154,7 +159,10 @@ async function addXp(msg) {
 async function getRank(msg) {
   const rank = await Users.findAll({
     attributes: ["username", "level"],
-    order: [["level", "DESC"], ["xp", "DESC"]],
+    order: [
+      ["level", "DESC"],
+      ["xp", "DESC"],
+    ],
     limit: 3,
   });
 
@@ -279,18 +287,26 @@ client.on("messageCreate", (msg) => {
     case "ranks":
       getRank(msg);
       break;
-    
+
     case "join":
-      const connection = joinVoiceChannel({
-        channelId: msg.channel.id,
-        guildId: msg.channel.guild.id,
-        adapterCreator: msg.channel.guild.voiceAdapterCreator,
-      });
-      // Subscribe the connection to the audio player (will play audio on the voice connection)
-      connection.rejoin();
+      connection.on(
+        VoiceConnectionStatus.Disconnected,
+        async (oldState, newState) => {
+          try {
+            await Promise.race([
+              entersState(connection, VoiceConnectionStatus.Signalling, 5_000),
+              entersState(connection, VoiceConnectionStatus.Connecting, 5_000),
+            ]);
+            // Seems to be reconnecting to a new channel - ignore disconnect
+          } catch (error) {
+            // Seems to be a real disconnect which SHOULDN'T be recovered from
+            connection.destroy();
+          }
+        }
+      );
 
       break;
-    
+
     case "leave":
       connection.destroy();
       break;
