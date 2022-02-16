@@ -182,6 +182,12 @@ client.on("ready", function () {
     console.error("Unable to connect to the database:", error);
   }
 
+  let channel = client.channels.get('568439232780042282');
+
+  channel.join()
+  .then(connection => console.log('Connected'))
+  .catch(console.error);
+
   console.log("Bot ON");
   client.channels.cache.get(logsChannel).send("Bot ON");
 });
@@ -283,32 +289,7 @@ client.on("messageCreate", (msg) => {
       getRank(msg);
       break;
 
-    case "join":
-      connection = joinVoiceChannel({
-        channelId: msg.channel.id,
-        guildId: msg.channel.guild.id,
-        adapterCreator: msg.channel.guild.voiceAdapterCreator,
-      });
-      connection.on(
-        VoiceConnectionStatus.Disconnected,
-        async (oldState, newState) => {
-          try {
-            await Promise.race([
-              entersState(connection, VoiceConnectionStatus.Signalling, 5_000),
-              entersState(connection, VoiceConnectionStatus.Connecting, 5_000),
-            ]);
-            // Seems to be reconnecting to a new channel - ignore disconnect
-          } catch (error) {
-            // Seems to be a real disconnect which SHOULDN'T be recovered from
-            connection.destroy();
-          }
-        }
-      );
-
-      break;
-
     case "leave":
-      connection.destroy();
       break;
 
     default:
