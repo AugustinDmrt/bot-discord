@@ -160,12 +160,12 @@ async function getRank(msg) {
     limit: 3,
   });
 
-  msg.channel.send("---------- Top 3 des racistes ----------");
-  msg.channel.send(
+  let rankListe = "---------- Top 3 des racistes ---------- \n ";
   rank.map( r => {
-    msg.channel.send("**"+ r.username + "** avec un niveau de : **" + r.level + "** \n")
-  })
-  );
+    rankListe = rankListe + "**"+ r.username + "** avec un niveau de : **" + r.level + "** \n ";
+  });
+  
+  msg.channel.send(rankListe);
 }
 
 //Toutes les actions à faire quand le bot se connecte
