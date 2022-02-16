@@ -161,10 +161,11 @@ async function getRank(msg) {
   });
 
   msg.channel.send("---------- Top 3 des racistes ----------");
-
+  msg.channel.send(
   rank.map( r => {
-    msg.channel.send("**"+ r.username + "** avec un niveau de : **" + r.level + "**")
-  });
+    msg.channel.send("**"+ r.username + "** avec un niveau de : **" + r.level + "** \n")
+  })
+  );
 }
 
 //Toutes les actions à faire quand le bot se connecte
