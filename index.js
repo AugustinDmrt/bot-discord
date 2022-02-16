@@ -162,7 +162,7 @@ async function getRank(msg) {
 
   let rankListe = "---------- Top 3 des racistes ---------- \n ";
   rank.map( r => {
-    rankListe = rankListe + "**"+ r.username + "** avec un niveau de : **" + r.level + "** \n ";
+    rankListe += "**"+ r.username + "** avec un niveau de : **" + r.level + "** \n ";
   });
   
   msg.channel.send(rankListe);
