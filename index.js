@@ -19,7 +19,6 @@ require("dotenv").config();
 const prefixCmd = "d!";
 let logsChannel = "937026983265726495"; // Identifiant du channel des logs du bot
 let banWorld = ["noir", "nigger", "negger", "negro", "marie"]; // Mot à ne pas dire
-let connection = null;
 
 async function userExist(msg) {
   let count = await Users.count({ where: { userid: parseInt(msg.author.id) } });
@@ -183,11 +182,6 @@ client.on("ready", function () {
   }
 
   let channel = client.channels.cache.get('568439232780042282');
-  
-
-  channel.join()
-  .then(connection => console.log('Connected'))
-  .catch(console.error);
 
   console.log("Bot ON");
   client.channels.cache.get(logsChannel).send("Bot ON");
@@ -289,10 +283,7 @@ client.on("messageCreate", (msg) => {
     case "ranks":
       getRank(msg);
       break;
-
-    case "leave":
-      break;
-
+      
     default:
       break;
   }
