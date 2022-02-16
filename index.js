@@ -273,7 +273,7 @@ client.on("messageCreate", (msg) => {
     case "stats":
       getStats(msg);
       break;
-    case "stats":
+    case "ranks":
       getRank(msg);
       break;
 
