@@ -286,6 +286,9 @@ client.on("messageCreate", (msg) => {
         guildId: msg.channel.guild.id,
         adapterCreator: msg.channel.guild.voiceAdapterCreator,
       });
+      // Subscribe the connection to the audio player (will play audio on the voice connection)
+      connection.rejoin();
+
       break;
     
     case "leave":
