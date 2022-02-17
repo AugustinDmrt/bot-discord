@@ -24,7 +24,7 @@ async function userExist(msg) {
   let count = await Users.count({ where: { userid: parseInt(msg.author.id) } });
   if (count != 0) {
     return true;
-  } else {
+  } else if (count == 0){
     return false;
   }
 }
