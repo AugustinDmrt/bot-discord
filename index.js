@@ -169,6 +169,30 @@ async function getRank(msg) {
   msg.channel.send(rankListe);
 }
 
+async function addUser(msg) {
+  if (await (userExist(msg)) == true) {
+    msg.reply("Tu fais déjà partie des racistes !");
+  } else {
+    msg.member.roles.add("943246991352295455");
+    Users.create({
+      userid: parseInt(msg.author.id),
+      username: msg.author.username,
+      xp: 0,
+      level: 0,
+    });
+    msg.reply(
+      msg.author.tag + ", vous avez rejoind le tableau des racistes !"
+    );
+    client.channels.cache
+      .get(logsChannel)
+      .send(
+        "[Logs] : " +
+          msg.author.tag +
+          " a rejoind le tableau des racistes !"
+      );
+  }
+}
+
 //Toutes les actions à faire quand le bot se connecte
 client.on("ready", function () {
   try {
@@ -253,27 +277,7 @@ client.on("messageCreate", (msg) => {
       break;
 
     case "rejoindre":
-      if (userExist(msg) == true) {
-        msg.reply("Tu fais déjà partie des racistes !");
-      } else {
-        msg.member.roles.add("943246991352295455");
-        Users.create({
-          userid: parseInt(msg.author.id),
-          username: msg.author.username,
-          xp: 0,
-          level: 0,
-        });
-        msg.reply(
-          msg.author.tag + ", vous avez rejoind le tableau des racistes !"
-        );
-        client.channels.cache
-          .get(logsChannel)
-          .send(
-            "[Logs] : " +
-              msg.author.tag +
-              " a rejoind le tableau des racistes !"
-          );
-      }
+      addUser(msg);
       break;
 
     case "stats":
