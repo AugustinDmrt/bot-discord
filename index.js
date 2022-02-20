@@ -22,10 +22,10 @@ let banWorld = ["noir", "nigger", "negger", "negro", "marie"]; // Mot à ne pas 
 
 async function userExist(msg) {
   let count = await Users.count({ where: { userid: parseInt(msg.author.id) } });
-  if (count != 0) {
-    return true;
-  } else if (count == 0){
+  if (count == 0) {
     return false;
+  } else {
+    return true;
   }
 }
 
