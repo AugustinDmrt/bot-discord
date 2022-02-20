@@ -253,7 +253,7 @@ client.on("messageCreate", (msg) => {
       break;
 
     case "rejoindre":
-      if (userExist(msg)) {
+      if (userExist(msg) == true) {
         msg.reply("Tu fais déjà partie des racistes !");
       } else {
         msg.member.roles.add("943246991352295455");
