@@ -18,7 +18,7 @@ require("dotenv").config();
 
 const prefixCmd = "d!";
 let logsChannel = "937026983265726495"; // Identifiant du channel des logs du bot
-let banWorld = ["noir", "nigger", "negger", "negro", "marie"]; // Mot à ne pas dire
+let banWorld = ["noir", "nigger", "negger", "negro", "marie", "nigga", "negre", "nègre", "esclavage"]; // Mot à ne pas dire
 
 async function userExist(msg) {
   let count = await Users.count({ where: { userid: parseInt(msg.author.id) } });
@@ -181,14 +181,14 @@ async function addUser(msg) {
       level: 0,
     });
     msg.reply(
-      msg.author.tag + ", vous avez rejoind le tableau des racistes !"
+      msg.author.tag + ", vous avez rejoint le tableau des racistes !"
     );
     client.channels.cache
       .get(logsChannel)
       .send(
         "[Logs] : " +
           msg.author.tag +
-          " a rejoind le tableau des racistes !"
+          " a rejoint le tableau des racistes !"
       );
   }
 }
