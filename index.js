@@ -18,7 +18,17 @@ require("dotenv").config();
 
 const prefixCmd = "d!";
 let logsChannel = "937026983265726495"; // Identifiant du channel des logs du bot
-let banWorld = ["noir", "nigger", "negger", "negro", "marie", "nigga", "negre", "nègre", "esclavage"]; // Mot à ne pas dire
+let banWorld = [
+  "noir",
+  "nigger",
+  "negger",
+  "negro",
+  "marie",
+  "nigga",
+  "negre",
+  "nègre",
+  "esclavage",
+]; // Mot à ne pas dire
 
 async function userExist(msg) {
   let count = await Users.count({ where: { userid: parseInt(msg.author.id) } });
@@ -170,7 +180,7 @@ async function getRank(msg) {
 }
 
 async function addUser(msg) {
-  if (await (userExist(msg)) == true) {
+  if ((await userExist(msg)) == true) {
     msg.reply("Tu fais déjà partie des racistes !");
   } else {
     msg.member.roles.add("943246991352295455");
@@ -180,15 +190,11 @@ async function addUser(msg) {
       xp: 0,
       level: 0,
     });
-    msg.reply(
-      msg.author.tag + ", vous avez rejoint le tableau des racistes !"
-    );
+    msg.reply(msg.author.tag + ", vous avez rejoint le tableau des racistes !");
     client.channels.cache
       .get(logsChannel)
       .send(
-        "[Logs] : " +
-          msg.author.tag +
-          " a rejoint le tableau des racistes !"
+        "[Logs] : " + msg.author.tag + " a rejoint le tableau des racistes !"
       );
   }
 }
@@ -198,18 +204,14 @@ async function getUsers(msg) {
     attributes: ["username"],
   });
 
-  // let rankListe = "---------- Top 3 des racistes ---------- \n ";
-  // rank.map((r) => {
-  //   rankListe +=
-  //     "**" + r.username + "** avec un niveau de : **" + r.level + "** \n ";
-  // });
-
-  // msg.channel.send(rankListe);
-  let usersListe  = "---------- Voici la liste de tout les racistes ---------- \n ";
+  let usersListe =
+    "---------- Voici la liste de tout les racistes ---------- \n ";
   users.map((r) => {
     usersListe += "**" + r.username + "** \n ";
-  })
-  let usersListe  = "--------------------------------------------------------- \n ";
+  });
+  usersListe += "--------------------------------------------------------- \n ";
+
+  msg.channel.send(usersListe);
 }
 
 //Toutes les actions à faire quand le bot se connecte
@@ -224,7 +226,7 @@ client.on("ready", function () {
     console.error("Unable to connect to the database:", error);
   }
 
-  let channel = client.channels.cache.get('568439232780042282');
+  let channel = client.channels.cache.get("568439232780042282");
 
   console.log("Bot ON");
   client.channels.cache.get(logsChannel).send("Bot ON");
@@ -310,7 +312,7 @@ client.on("messageCreate", (msg) => {
     case "liste":
       getUsers(msg);
       break;
-      
+
     default:
       break;
   }
