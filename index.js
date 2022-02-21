@@ -193,6 +193,25 @@ async function addUser(msg) {
   }
 }
 
+async function getUsers(msg) {
+  const users = await Users.findAll({
+    attributes: ["username"],
+  });
+
+  // let rankListe = "---------- Top 3 des racistes ---------- \n ";
+  // rank.map((r) => {
+  //   rankListe +=
+  //     "**" + r.username + "** avec un niveau de : **" + r.level + "** \n ";
+  // });
+
+  // msg.channel.send(rankListe);
+  let usersListe  = "---------- Voici la liste de tout les racistes ---------- \n ";
+  users.map((r) => {
+    usersListe += "**" + r.username + "** \n ";
+  })
+  let usersListe  = "--------------------------------------------------------- \n ";
+}
+
 //Toutes les actions à faire quand le bot se connecte
 client.on("ready", function () {
   try {
@@ -286,6 +305,10 @@ client.on("messageCreate", (msg) => {
 
     case "ranks":
       getRank(msg);
+      break;
+
+    case "liste":
+      getUsers(msg);
       break;
       
     default:
