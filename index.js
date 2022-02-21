@@ -28,6 +28,10 @@ let banWorld = [
   "negre",
   "nègre",
   "esclavage",
+  "juif",
+  "arabe",
+  "said",
+  "lgbt",
 ]; // Mot à ne pas dire
 
 async function userExist(msg) {
